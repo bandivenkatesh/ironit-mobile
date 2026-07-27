@@ -21,18 +21,18 @@ class _OnboardingPageState extends State<OnboardingPage> {
   int _currentPage = 0;
 
   // Onboarding page data
-  final List<OnboardingPageData> _pages = [
-    OnboardingPageData(
+  final List<OnboardingPageData> _pages = <OnboardingPageData>[
+    const OnboardingPageData(
       title: 'Book Trusted Home Services',
       description: 'Find experienced professionals for every household need.',
       icon: Icons.handyman_outlined,
     ),
-    OnboardingPageData(
+    const OnboardingPageData(
       title: 'Real-time Tracking',
       description: 'Track your technician and receive live updates.',
       icon: Icons.track_changes_outlined,
     ),
-    OnboardingPageData(
+    const OnboardingPageData(
       title: 'Fast Secure Payments',
       description: 'Pay securely and manage all bookings in one place.',
       icon: Icons.payment_outlined,
@@ -47,7 +47,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   /// Marks onboarding as completed and navigates to welcome screen
   Future<void> _completeOnboarding() async {
-    final prefs = await SharedPreferences.getInstance();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('onboarding_complete', true);
 
     if (mounted) {
@@ -59,7 +59,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [
+        children: <Widget>[
           // PageView with onboarding content
           PageView.builder(
             controller: _pageController,
@@ -69,7 +69,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 _currentPage = page;
               });
             },
-            itemBuilder: (context, index) {
+            itemBuilder: (BuildContext context, int index) {
               return _buildOnboardingPage(_pages[index]);
             },
           ),
@@ -92,7 +92,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       padding: const EdgeInsets.all(AppSpacing.medium),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: <Widget>[
           // Illustration placeholder
           Container(
             height: 280,
@@ -140,7 +140,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       padding: const EdgeInsets.all(AppSpacing.large),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
-        boxShadow: [
+        boxShadow: <BoxShadow>[
           BoxShadow(
             color: Theme.of(context).colorScheme.shadow.withValues(alpha: 0.1),
             blurRadius: 8,
@@ -150,20 +150,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
         ],
       ),
       child: Column(
-        children: [
+        children: <Widget>[
           // Page indicator
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List<Widget>.generate(
               _pages.length,
-              (index) => _buildPageIndicator(index),
+              (int index) => _buildPageIndicator(index),
             ),
           ),
           const SizedBox(height: AppSpacing.large),
 
           // Action buttons
           Row(
-            children: [
+            children: <Widget>[
               if (_currentPage > 0)
                 Expanded(
                   child: SecondaryButton(

@@ -21,7 +21,7 @@ class WelcomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
+            children: <Widget>[
               const SizedBox(height: AppSpacing.xLarge),
               // Hero illustration placeholder
               Container(
@@ -83,8 +83,8 @@ class WelcomePage extends StatelessWidget {
               // Primary CTA - Get Started
               PrimaryButton(
                 onPressed: () {
-                  // Navigate to placeholder screen (will be replaced with actual login)
-                  context.go('/placeholder');
+                  // Navigate to login screen
+                  context.go('/login');
                 },
                 child: const Text('Get Started'),
               ),
@@ -92,8 +92,8 @@ class WelcomePage extends StatelessWidget {
               // Secondary CTA - Continue as Guest
               SecondaryButton(
                 onPressed: () {
-                  // Navigate to placeholder screen (will be replaced with guest flow)
-                  context.go('/guest-placeholder');
+                  // Navigate to dashboard as guest
+                  context.go('/dashboard-placeholder');
                 },
                 child: const Text('Continue as Guest'),
               ),
@@ -135,7 +135,7 @@ class WelcomePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
-        children: [
+        children: <Widget>[
           Container(
             width: 48,
             height: 48,
@@ -153,7 +153,7 @@ class WelcomePage extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Text(
                   title,
                   style: AppTypography.subtitle1.copyWith(

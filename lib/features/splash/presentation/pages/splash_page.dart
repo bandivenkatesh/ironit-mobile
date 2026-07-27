@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../core/storage/app_preferences.dart';
 import '../../../../core/theme/app_motion.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_typography.dart';
@@ -50,14 +50,16 @@ class _SplashPageState extends State<SplashPage>
     _controller.forward();
 
     // Auto-navigate after 2 seconds
-    // Note: We defer the SharedPreferences check using WidgetsBinding to ensure
+    // Note: We defer the navigation check using WidgetsBinding to ensure
     // plugins are properly initialized before accessing native functionality
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (mounted) {
         try {
-          final prefs = await SharedPreferences.getInstance();
-          final onboardingComplete =
-              prefs.getBool('onboarding_complete') ?? false;
+          // Initialize preferences service
+          await AppPreferences.initialize();
+
+          final bool onboardingComplete =
+              AppPreferences.getOnboardingComplete();
 
           if (onboardingComplete) {
             context.go('/welcome');
@@ -65,7 +67,7 @@ class _SplashPageState extends State<SplashPage>
             context.go('/onboarding');
           }
         } catch (e) {
-          // Fallback to welcome screen if SharedPreferences fails
+          // Fallback to welcome screen if preferences initialization fails
           context.go('/welcome');
         }
       }
@@ -89,7 +91,7 @@ class _SplashPageState extends State<SplashPage>
             scale: _scaleAnimation,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: <Widget>[
                 // Logo placeholder with elegant container
                 Container(
                   width: 120,
@@ -97,7 +99,7 @@ class _SplashPageState extends State<SplashPage>
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.primaryContainer,
                     shape: BoxShape.circle,
-                    boxShadow: [
+                    boxShadow: <BoxShadow>[
                       BoxShadow(
                         color: Theme.of(context)
                             .colorScheme

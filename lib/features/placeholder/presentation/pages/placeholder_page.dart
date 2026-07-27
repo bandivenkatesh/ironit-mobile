@@ -29,7 +29,7 @@ class PlaceholderPage extends StatelessWidget {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: <Widget>[
               Icon(
                 Icons.build_outlined,
                 size: 80,

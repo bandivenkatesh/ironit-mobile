@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import '../../features/splash/presentation/pages/splash_page.dart';
 import '../../features/onboarding/presentation/pages/onboarding_page.dart';
 import '../../features/welcome/presentation/pages/welcome_page.dart';
+import '../../features/auth/presentation/pages/login_page.dart';
+import '../../features/auth/presentation/pages/register_page.dart';
+import '../../features/auth/presentation/pages/forgot_password_page.dart';
 import '../../features/placeholder/presentation/pages/placeholder_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 
@@ -27,6 +30,35 @@ class AppRouter {
         path: '/welcome',
         builder: (BuildContext context, GoRouterState state) {
           return const WelcomePage();
+        },
+      ),
+      GoRoute(
+        path: '/login',
+        builder: (BuildContext context, GoRouterState state) {
+          return const LoginPage();
+        },
+      ),
+      GoRoute(
+        path: '/register',
+        builder: (BuildContext context, GoRouterState state) {
+          return const RegisterPage();
+        },
+      ),
+      GoRoute(
+        path: '/forgot-password',
+        builder: (BuildContext context, GoRouterState state) {
+          return const ForgotPasswordPage();
+        },
+      ),
+      GoRoute(
+        path: '/dashboard-placeholder',
+        builder: (BuildContext context, GoRouterState state) {
+          return const PlaceholderPage(
+            title: 'Dashboard Placeholder',
+            description:
+                'This screen represents the authenticated user dashboard. Will be implemented in future sprints.',
+            routeName: 'Dashboard',
+          );
         },
       ),
       GoRoute(

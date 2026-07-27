@@ -8,24 +8,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Backend API integration
-- Authentication system
-- Payment processing
-- Real-time order tracking
-- Notification system
-- Analytics and monitoring
+- **Authentication Module** (Story 3)
+  - Mock authentication service with login, register, forgot password, and guest modes
+  - Authentication state management with AuthState class
+  - Login screen with email/password validation and social login placeholders
+  - Register screen with full form validation and terms acceptance
+  - Forgot password screen with email validation and success state
+  - Reusable authentication components:
+    - `AuthTextField` - Consistent form field styling
+    - `PasswordField` - Password input with visibility toggle
+    - `SocialLoginPlaceholder` - Social login buttons with "coming soon" functionality
+  - Storage abstraction layer:
+    - `AppPreferences` - Centralized SharedPreferences access
+    - `PreferenceKeys` - All preference keys in one place
+  - New routes: `/login`, `/register`, `/forgot-password`, `/dashboard-placeholder`
 
 ### Changed
-- Performance optimizations
-- UI refinements based on user feedback
-- Improved error handling
-- Enhanced accessibility features
+- **Architecture Improvements**
+  - Refactored SharedPreferences access to use AppPreferences abstraction
+  - Updated splash screen to use new storage abstraction
+  - Enhanced welcome screen navigation to use authentication flow
+  - Improved router organization with authentication routes
+  - Updated onboarding completion to use PreferenceKeys constants
+
+- **Code Quality**
+  - Reduced analyzer warnings from 49 to 33
+  - Maintained 100% test pass rate (20/20)
+  - Improved type safety and null safety
+  - Enhanced error handling with fallback navigation
 
 ### Fixed
-- Edge case bugs
-- Memory leaks
-- Animation jank
-- Responsive layout issues
+- Resolved MissingPluginException in splash screen
+- Fixed SharedPreferences initialization timing using WidgetsBinding.addPostFrameCallback
+- Improved navigation flow with proper mounted checks
+- Ensured all form validation works correctly
+- Fixed theme compatibility issues in new components
 
 ## [v0.1.0] - 2026-07-27
 
