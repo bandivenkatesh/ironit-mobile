@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/splash/presentation/pages/splash_page.dart';
+import '../../features/onboarding/presentation/pages/onboarding_page.dart';
 import '../../features/welcome/presentation/pages/welcome_page.dart';
 import '../../features/placeholder/presentation/pages/placeholder_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
@@ -14,6 +15,12 @@ class AppRouter {
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
           return const SplashPage();
+        },
+      ),
+      GoRoute(
+        path: '/onboarding',
+        builder: (BuildContext context, GoRouterState state) {
+          return const OnboardingPage();
         },
       ),
       GoRoute(

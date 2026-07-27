@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/theme/app_motion.dart';
 import '../../../../core/theme/app_spacing.dart';
@@ -48,10 +49,18 @@ class _SplashPageState extends State<SplashPage>
     // Start animation
     _controller.forward();
 
-    // Auto-navigate to welcome after 2 seconds
-    Future<void>.delayed(const Duration(seconds: 2), () {
+    // Auto-navigate after 2 seconds
+    Future<void>.delayed(const Duration(seconds: 2), () async {
       if (mounted) {
-        context.go('/welcome');
+        final prefs = await SharedPreferences.getInstance();
+        final onboardingComplete =
+            prefs.getBool('onboarding_complete') ?? false;
+
+        if (onboardingComplete) {
+          context.go('/welcome');
+        } else {
+          context.go('/onboarding');
+        }
       }
     });
   }
