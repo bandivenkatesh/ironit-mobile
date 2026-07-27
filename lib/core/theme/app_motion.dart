@@ -1,5 +1,7 @@
 /// App motion system with standardized animation durations and curves.
 /// Follows the design system specifications for consistent animations.
+library app_motion;
+
 import 'package:flutter/animation.dart';
 
 class AppMotion {

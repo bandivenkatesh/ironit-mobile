@@ -25,7 +25,7 @@ class AppRouter {
       GoRoute(
         path: '/placeholder',
         builder: (BuildContext context, GoRouterState state) {
-          return PlaceholderPage(
+          return const PlaceholderPage(
             title: 'Login Placeholder',
             description:
                 'This screen will be replaced with the actual login functionality in a future sprint.',
@@ -36,7 +36,7 @@ class AppRouter {
       GoRoute(
         path: '/guest-placeholder',
         builder: (BuildContext context, GoRouterState state) {
-          return PlaceholderPage(
+          return const PlaceholderPage(
             title: 'Guest Mode Placeholder',
             description:
                 'This screen will be replaced with the actual guest user flow in a future sprint.',

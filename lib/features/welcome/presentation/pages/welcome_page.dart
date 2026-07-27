@@ -131,7 +131,7 @@ class WelcomePage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.medium),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceVariant,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(

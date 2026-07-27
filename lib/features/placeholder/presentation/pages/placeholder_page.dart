@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/widgets/app_scaffold.dart';
 import '../../../../core/widgets/primary_button.dart';
@@ -49,7 +50,9 @@ class PlaceholderPage extends StatelessWidget {
               const SizedBox(height: 32),
               PrimaryButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  // Use go() instead of pop() since we arrived via go()
+                  // This ensures we never try to pop the root route
+                  GoRouter.of(context).go('/welcome');
                 },
                 child: const Text('Go Back'),
               ),
