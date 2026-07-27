@@ -16,8 +16,8 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
-  final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
   bool _isLoading = false;
   bool _emailSent = false;
 
@@ -78,7 +78,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
+              children: <Widget>[
                 const SizedBox(height: AppSpacing.xLarge),
 
                 // Instruction
@@ -97,7 +97,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   label: 'Email',
                   hint: 'Enter your registered email',
                   keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
+                  validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Email is required';
                     }
@@ -154,7 +154,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         padding: const EdgeInsets.all(AppSpacing.xLarge),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             Icon(
               Icons.mark_email_read,
               size: 80,

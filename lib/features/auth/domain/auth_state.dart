@@ -78,11 +78,11 @@ class AuthState {
   /// Create from map
   factory AuthState.fromMap(Map<String, dynamic> map) {
     return AuthState(
-      isLoggedIn: map['isLoggedIn'] ?? false,
-      isGuest: map['isGuest'] ?? false,
-      userId: map['userId'],
-      userName: map['userName'],
-      userEmail: map['userEmail'],
+      isLoggedIn: map['isLoggedIn'] as bool? ?? false,
+      isGuest: map['isGuest'] as bool? ?? false,
+      userId: map['userId'] as String?,
+      userName: map['userName'] as String?,
+      userEmail: map['userEmail'] as String?,
     );
   }
 

@@ -1,0 +1,24 @@
+# Code Owners for Ironit Mobile
+
+# Core Team
+* @bandivenkatesh
+
+# Documentation
+docs/ @bandivenkatesh
+
+# Flutter App
+lib/ @bandivenkatesh
+test/ @bandivenkatesh
+
+# Platform Specific
+android/ @bandivenkatesh
+ios/ @bandivenkatesh
+web/ @bandivenkatesh
+
+# Configuration
+.github/ @bandivenkatesh
+*.yaml @bandivenkatesh
+*.yml @bandivenkatesh
+
+# Assets
+assets/ @bandivenkatesh

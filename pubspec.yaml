@@ -1,6 +1,9 @@
 name: ironit
-description: On-demand ironing service for Hyderabad
-version: 1.0.0+1
+description: Premium on-demand ironing service for Hyderabad with professional-grade Flutter implementation
+version: 0.1.0+1
+homepage: https://github.com/bandivenkatesh/ironit-mobile
+repository: https://github.com/bandivenkatesh/ironit-mobile
+issue_tracker: https://github.com/bandivenkatesh/ironit-mobile/issues
 
 environment:
   sdk: ">=3.0.0 <4.0.0"

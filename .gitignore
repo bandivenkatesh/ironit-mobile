@@ -8,12 +8,77 @@ pubspec.lock
 
 # Environment files
 .env
+.env.local
+.env*.local
 
 # IDE files
 .idea/
 .vscode/
 *.swp
 *.swo
+*.swn
+*.swm
+*.lock
+.DS_Store
+*.iml
+*.ipr
+*.iws
+*.code-workspace
 
 # Build outputs
 build/
+android/.gradle/
+android/build/
+android/app/build/
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Generated.xcframework
+ios/Flutter/ephemeral/
+ios/Runner.xcworkspace/
+macos/Pods/
+macos/.symlinks/
+web/build/
+linux/build/
+windows/build/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Coverage
+coverage/
+.lcov
+*.lcov
+
+# Dart/Flutter specific
+analysis_options.yaml
+analyzer_results.txt
+flutter_*.png
+flutter_*.svg
+flutter_*.jpg
+flutter_*.jpeg
+flutter_*.gif
+flutter_*.bmp
+flutter_*.wbmp
+flutter_*.webp
+flutter_*.ico
+flutter_*.heic
+flutter_*.heif
+flutter_*.avif
+
+# Dependency files
+yarn.lock
+package-lock.json
+
+# Cache
+.cache/
+*.cache
+
+# Test and coverage
+test/
+coverage/
+
+# Misc
+*.g.output
+*.g.output/

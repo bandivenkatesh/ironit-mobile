@@ -17,12 +17,13 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   bool _isLoading = false;
   bool _termsAccepted = false;
 
@@ -93,7 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
+              children: <Widget>[
                 const SizedBox(height: AppSpacing.medium),
 
                 // Full Name
@@ -102,7 +103,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   label: 'Full Name',
                   hint: 'Enter your full name',
                   keyboardType: TextInputType.name,
-                  validator: (value) {
+                  validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Name is required';
                     }
@@ -120,7 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   label: 'Email',
                   hint: 'Enter your email',
                   keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
+                  validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Email is required';
                     }
@@ -138,7 +139,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   label: 'Phone Number',
                   hint: 'Enter your phone number',
                   keyboardType: TextInputType.phone,
-                  validator: (value) {
+                  validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Phone number is required';
                     }
@@ -155,7 +156,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _passwordController,
                   label: 'Password',
                   hint: 'Create a password',
-                  validator: (value) {
+                  validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Password is required';
                     }
@@ -172,7 +173,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _confirmPasswordController,
                   label: 'Confirm Password',
                   hint: 'Re-enter your password',
-                  validator: (value) {
+                  validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Please confirm your password';
                     }
@@ -186,10 +187,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 // Terms and Conditions
                 Row(
-                  children: [
+                  children: <Widget>[
                     Checkbox(
                       value: _termsAccepted,
-                      onChanged: (value) {
+                      onChanged: (bool? value) {
                         setState(() {
                           _termsAccepted = value ?? false;
                         });
@@ -203,7 +204,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           style: AppTypography.bodyText2.copyWith(
                             color: Theme.of(context).colorScheme.onSurface,
                           ),
-                          children: [
+                          children: <InlineSpan>[
                             const TextSpan(
                               text: 'I agree to the ',
                             ),
@@ -243,7 +244,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 // Login Link
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: <Widget>[
                     Text(
                       'Already have an account? ',
                       style: AppTypography.bodyText2.copyWith(
