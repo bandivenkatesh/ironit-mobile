@@ -89,7 +89,7 @@ class SecondaryButton extends StatelessWidget {
                 ? Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: <Widget>[
                       icon!,
                       const SizedBox(width: 8),
                       child,

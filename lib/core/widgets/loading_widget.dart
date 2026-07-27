@@ -27,7 +27,7 @@ class LoadingWidget extends StatelessWidget {
 
     if (isFullScreen) {
       return Stack(
-        children: [
+        children: <Widget>[
           ModalBarrier(
             dismissible: false,
             color: colorScheme.scrim,

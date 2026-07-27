@@ -41,7 +41,7 @@ class EmptyStateWidget extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             IconTheme(
               data: IconThemeData(
                 color: colorScheme.onSurfaceVariant,
@@ -57,7 +57,7 @@ class EmptyStateWidget extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            if (subtitle != null && subtitle!.isNotEmpty) ...[
+            if (subtitle != null && subtitle!.isNotEmpty) ...<Widget>[
               const SizedBox(height: 8),
               Text(
                 subtitle!,
@@ -67,7 +67,7 @@ class EmptyStateWidget extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ],
-            if (action != null) ...[
+            if (action != null) ...<Widget>[
               const SizedBox(height: 16),
               action!,
             ],

@@ -14,21 +14,24 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       final CircularProgressIndicator progressIndicator =
           tester.widget<CircularProgressIndicator>(
-              find.byType(CircularProgressIndicator));
+        find.byType(CircularProgressIndicator),
+      );
       expect(progressIndicator.strokeWidth, equals(2));
     });
 
     testWidgets('renders with custom size', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: LoadingWidget(size: 48),
         ),
       );
 
-      final sizedBox = tester.widget<SizedBox>(find.ancestor(
-        of: find.byType(CircularProgressIndicator),
-        matching: find.byType(SizedBox),
-      ));
+      final SizedBox sizedBox = tester.widget<SizedBox>(
+        find.ancestor(
+          of: find.byType(CircularProgressIndicator),
+          matching: find.byType(SizedBox),
+        ),
+      );
       expect(sizedBox.width, equals(48));
       expect(sizedBox.height, equals(48));
     });
@@ -37,17 +40,19 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           theme: ThemeData(
-            colorScheme: ColorScheme.light(
+            colorScheme: const ColorScheme.light(
               primary: Colors.blue,
             ),
           ),
-          home: LoadingWidget(),
+          home: const LoadingWidget(),
         ),
       );
 
-      final progressIndicator = tester.widget<CircularProgressIndicator>(
-          find.byType(CircularProgressIndicator));
-      final valueColor =
+      final CircularProgressIndicator progressIndicator =
+          tester.widget<CircularProgressIndicator>(
+        find.byType(CircularProgressIndicator),
+      );
+      final AlwaysStoppedAnimation<Color> valueColor =
           progressIndicator.valueColor as AlwaysStoppedAnimation<Color>;
       expect(valueColor.value, equals(Colors.blue));
     });

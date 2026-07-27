@@ -27,14 +27,14 @@ void main() {
 
     testWidgets('shows prefix and suffix icons', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: Center(
               child: SizedBox(
                 width: 300,
                 child: AppTextField(
-                  prefixIcon: const Icon(Icons.person),
-                  suffixIcon: const Icon(Icons.visibility),
+                  prefixIcon: Icon(Icons.person),
+                  suffixIcon: Icon(Icons.visibility),
                   hintText: 'With icons',
                 ),
               ),
@@ -49,7 +49,7 @@ void main() {
 
     testWidgets('toggles password visibility', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: Center(
               child: SizedBox(
@@ -66,7 +66,8 @@ void main() {
       );
 
       // Initially should be obscured
-      final textField = tester.widget<TextField>(find.byType(TextField));
+      final TextField textField =
+          tester.widget<TextField>(find.byType(TextField));
       expect(textField.obscureText, isTrue);
 
       // Tap the visibility toggle
@@ -74,13 +75,14 @@ void main() {
       await tester.pump();
 
       // Should now be visible
-      final updatedTextField = tester.widget<TextField>(find.byType(TextField));
+      final TextField updatedTextField =
+          tester.widget<TextField>(find.byType(TextField));
       expect(updatedTextField.obscureText, isFalse);
     });
 
     testWidgets('shows error text when provided', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: Center(
               child: SizedBox(
@@ -100,7 +102,7 @@ void main() {
 
     testWidgets('supports multi-line input', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: Center(
               child: SizedBox(
@@ -116,7 +118,8 @@ void main() {
         ),
       );
 
-      final textField = tester.widget<TextField>(find.byType(TextField));
+      final TextField textField =
+          tester.widget<TextField>(find.byType(TextField));
       expect(textField.maxLines, equals(3));
       expect(textField.minLines, equals(2));
     });
@@ -124,7 +127,7 @@ void main() {
     testWidgets('is disabled when enabled is false',
         (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: Center(
               child: SizedBox(
@@ -139,12 +142,14 @@ void main() {
         ),
       );
 
-      final textField = tester.widget<TextField>(find.byType(TextField));
+      final TextField textField =
+          tester.widget<TextField>(find.byType(TextField));
       expect(textField.enabled, isFalse);
     });
 
     testWidgets('uses controller correctly', (WidgetTester tester) async {
-      final controller = TextEditingController(text: 'Initial text');
+      final TextEditingController controller =
+          TextEditingController(text: 'Initial text');
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -163,7 +168,8 @@ void main() {
 
       expect(controller.text, equals('Initial text'));
       // The text field should show the controller's text
-      final textField = tester.widget<TextField>(find.byType(TextField));
+      final TextField textField =
+          tester.widget<TextField>(find.byType(TextField));
       expect(textField.controller?.text, equals('Initial text'));
     });
   });

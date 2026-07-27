@@ -77,7 +77,8 @@ void main() {
         ),
       );
 
-      final button = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+      final ElevatedButton button =
+          tester.widget<ElevatedButton>(find.byType(ElevatedButton));
       expect(button.onPressed, isNull);
     });
 
@@ -101,14 +102,15 @@ void main() {
       );
 
       // Find the SizedBox that has width = double.infinity
-      final fullWidthButton = find.byWidgetPredicate(
-        (widget) => widget is SizedBox && widget.width == double.infinity,
+      final Finder fullWidthButton = find.byWidgetPredicate(
+        (Widget widget) =>
+            widget is SizedBox && widget.width == double.infinity,
       );
       expect(fullWidthButton, findsOneWidget);
     });
 
     testWidgets('calls onPressed when tapped', (WidgetTester tester) async {
-      var tapped = false;
+      bool tapped = false;
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(

@@ -133,7 +133,7 @@ class _AppTextFieldState extends State<AppTextField> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: <Widget>[
         Material(
           color: Colors.transparent,
           child: TextField(

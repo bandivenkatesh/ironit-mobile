@@ -41,7 +41,7 @@ class ErrorStateWidget extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             IconTheme(
               data: IconThemeData(
                 color: colorScheme.error,
@@ -57,7 +57,7 @@ class ErrorStateWidget extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            if (onRetry != null) ...[
+            if (onRetry != null) ...<Widget>[
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: onRetry,
