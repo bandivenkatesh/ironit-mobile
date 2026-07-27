@@ -50,16 +50,23 @@ class _SplashPageState extends State<SplashPage>
     _controller.forward();
 
     // Auto-navigate after 2 seconds
-    Future<void>.delayed(const Duration(seconds: 2), () async {
+    // Note: We defer the SharedPreferences check using WidgetsBinding to ensure
+    // plugins are properly initialized before accessing native functionality
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (mounted) {
-        final prefs = await SharedPreferences.getInstance();
-        final onboardingComplete =
-            prefs.getBool('onboarding_complete') ?? false;
+        try {
+          final prefs = await SharedPreferences.getInstance();
+          final onboardingComplete =
+              prefs.getBool('onboarding_complete') ?? false;
 
-        if (onboardingComplete) {
+          if (onboardingComplete) {
+            context.go('/welcome');
+          } else {
+            context.go('/onboarding');
+          }
+        } catch (e) {
+          // Fallback to welcome screen if SharedPreferences fails
           context.go('/welcome');
-        } else {
-          context.go('/onboarding');
         }
       }
     });
