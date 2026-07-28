@@ -136,7 +136,7 @@ class _ServicesPageState extends ConsumerState<ServicesPage> {
                 },
               ),
             );
-          }).toList(),
+          }),
         ],
       ),
     );

@@ -170,12 +170,12 @@ class ServiceDetailPage extends ConsumerWidget {
                 ),
                 const SizedBox(height: AppSpacing.small),
                 _buildFeatureItem(
-                    context, Icons.check_circle, 'Professional quality'),
+                    context, Icons.check_circle, 'Professional quality',),
                 _buildFeatureItem(
-                    context, Icons.timer, 'Quick turnaround time'),
+                    context, Icons.timer, 'Quick turnaround time',),
                 _buildFeatureItem(context, Icons.eco, 'Eco-friendly processes'),
                 _buildFeatureItem(
-                    context, Icons.local_laundry_service, 'Expert handling'),
+                    context, Icons.local_laundry_service, 'Expert handling',),
                 const SizedBox(height: AppSpacing.large),
 
                 // What's Included
