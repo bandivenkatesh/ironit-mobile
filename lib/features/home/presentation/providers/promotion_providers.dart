@@ -9,25 +9,28 @@ import '../../domain/models/promotion.dart';
 import '../../domain/repositories/promotion_repository.dart';
 
 /// Promotion Repository Provider
-final promotionRepositoryProvider = Provider<PromotionRepository>((ref) {
+final Provider<PromotionRepository> promotionRepositoryProvider =
+    Provider<PromotionRepository>((Ref ref) {
   return MockPromotionRepository();
 });
 
 /// All Promotions Provider
-final allPromotionsProvider = FutureProvider<List<Promotion>>((ref) async {
-  final repository = ref.watch(promotionRepositoryProvider);
+final FutureProvider<List<Promotion>> allPromotionsProvider =
+    FutureProvider<List<Promotion>>((Ref ref) async {
+  final PromotionRepository repository = ref.watch(promotionRepositoryProvider);
   return repository.getAllPromotions();
 });
 
 /// Active Promotions Provider
-final activePromotionsProvider = FutureProvider<List<Promotion>>((ref) async {
-  final repository = ref.watch(promotionRepositoryProvider);
+final FutureProvider<List<Promotion>> activePromotionsProvider =
+    FutureProvider<List<Promotion>>((Ref ref) async {
+  final PromotionRepository repository = ref.watch(promotionRepositoryProvider);
   return repository.getActivePromotions();
 });
 
 /// Promotion by ID Provider
-final promotionByIdProvider =
-    FutureProvider.family<Promotion?, String>((ref, id) async {
-  final repository = ref.watch(promotionRepositoryProvider);
+final FutureProviderFamily<Promotion?, String> promotionByIdProvider =
+    FutureProviderFamily<Promotion?, String>((Ref ref, String id) async {
+  final PromotionRepository repository = ref.watch(promotionRepositoryProvider);
   return repository.getPromotionById(id);
 });

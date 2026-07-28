@@ -47,8 +47,11 @@ class ServiceCard extends StatelessWidget {
                   height: isCompact ? 100 : 120,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  errorBuilder: (BuildContext context, Object error,
-                      StackTrace? stackTrace) {
+                  errorBuilder: (
+                    BuildContext context,
+                    Object error,
+                    StackTrace? stackTrace,
+                  ) {
                     return Container(
                       height: isCompact ? 100 : 120,
                       color:
@@ -60,8 +63,11 @@ class ServiceCard extends StatelessWidget {
                       ),
                     );
                   },
-                  loadingBuilder: (BuildContext context, Widget child,
-                      ImageChunkEvent? loadingProgress) {
+                  loadingBuilder: (
+                    BuildContext context,
+                    Widget child,
+                    ImageChunkEvent? loadingProgress,
+                  ) {
                     if (loadingProgress == null) return child;
                     return Container(
                       height: isCompact ? 100 : 120,

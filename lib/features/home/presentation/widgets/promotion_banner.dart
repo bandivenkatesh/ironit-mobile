@@ -48,8 +48,11 @@ class PromotionBanner extends StatelessWidget {
                   ),
                 );
               },
-              loadingBuilder: (BuildContext context, Widget child,
-                  ImageChunkEvent? loadingProgress) {
+              loadingBuilder: (
+                BuildContext context,
+                Widget child,
+                ImageChunkEvent? loadingProgress,
+              ) {
                 if (loadingProgress == null) return child;
                 return Container(
                   height: 160,

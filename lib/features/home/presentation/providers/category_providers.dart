@@ -9,25 +9,28 @@ import '../../domain/models/category.dart';
 import '../../domain/repositories/category_repository.dart';
 
 /// Category Repository Provider
-final categoryRepositoryProvider = Provider<CategoryRepository>((ref) {
+final Provider<CategoryRepository> categoryRepositoryProvider =
+    Provider<CategoryRepository>((Ref ref) {
   return MockCategoryRepository();
 });
 
 /// All Categories Provider
-final allCategoriesProvider = FutureProvider<List<Category>>((ref) async {
-  final repository = ref.watch(categoryRepositoryProvider);
+final FutureProvider<List<Category>> allCategoriesProvider =
+    FutureProvider<List<Category>>((Ref ref) async {
+  final CategoryRepository repository = ref.watch(categoryRepositoryProvider);
   return repository.getAllCategories();
 });
 
 /// Featured Categories Provider
-final featuredCategoriesProvider = FutureProvider<List<Category>>((ref) async {
-  final repository = ref.watch(categoryRepositoryProvider);
+final FutureProvider<List<Category>> featuredCategoriesProvider =
+    FutureProvider<List<Category>>((Ref ref) async {
+  final CategoryRepository repository = ref.watch(categoryRepositoryProvider);
   return repository.getFeaturedCategories();
 });
 
 /// Category by ID Provider
-final categoryByIdProvider =
-    FutureProvider.family<Category?, String>((ref, id) async {
-  final repository = ref.watch(categoryRepositoryProvider);
+final FutureProviderFamily<Category?, String> categoryByIdProvider =
+    FutureProviderFamily<Category?, String>((Ref ref, String id) async {
+  final CategoryRepository repository = ref.watch(categoryRepositoryProvider);
   return repository.getCategoryById(id);
 });
