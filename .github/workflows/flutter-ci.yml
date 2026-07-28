@@ -1,4 +1,4 @@
-name: Flutter CI
+name: Flutter CI-2
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main, dev ]
 
 env:
-  FLUTTER_VERSION: "3.19.5"
+  FLUTTER_VERSION: "3.44.8"
   JAVA_VERSION: "17"
 
 jobs:
