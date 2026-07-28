@@ -58,8 +58,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
     if (mounted) {
       // In real app, this would call auth service
-      // For now, navigate to dashboard placeholder
-      context.go('/dashboard-placeholder');
+      // For now, navigate to home dashboard
+      context.go('/home');
     }
 
     if (mounted) {

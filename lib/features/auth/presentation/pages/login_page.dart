@@ -44,8 +44,8 @@ class _LoginPageState extends State<LoginPage> {
 
     if (mounted) {
       // In real app, this would call auth service
-      // For now, navigate to dashboard placeholder
-      context.go('/dashboard-placeholder');
+      // For now, navigate to home dashboard
+      context.go('/home');
     }
 
     if (mounted) {
@@ -159,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Continue as Guest
                 SecondaryButton(
                   onPressed: () {
-                    context.go('/dashboard-placeholder');
+                    context.go('/home');
                   },
                   child: const Text('Continue as Guest'),
                 ),

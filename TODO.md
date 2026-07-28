@@ -107,21 +107,21 @@
 
 ## 📋 Sprint 2 (UI Core Features)
 
-### Story 4: Enhanced Home Dashboard ⏳ PLANNED
+### Story 4: Enhanced Home Dashboard ✅ COMPLETED
 **Priority**: 🔥 High
-**Status**: ⏳ Planned
+**Status**: ✅ COMPLETED
 **Dependencies**: Story 3
 **Definition of Done**:
-- [ ] User greeting with mock data
-- [ ] Service categories grid
-- [ ] Promotional banners
-- [ ] Quick booking button
-- [ ] Navigation to all sections
-- [ ] Loading state
-- [ ] Empty state
-- [ ] Error state
-- [ ] Responsive layout
-- [ ] Dark mode support
+- [x] User greeting with mock data
+- [x] Service categories grid
+- [x] Promotional banners
+- [x] Quick booking button
+- [x] Navigation to all sections
+- [x] Loading state
+- [x] Empty state
+- [x] Error state
+- [x] Responsive layout
+- [x] Dark mode support
 
 ### Story 5: Service Categories ⏳ PLANNED
 **Priority**: 🔥 High
