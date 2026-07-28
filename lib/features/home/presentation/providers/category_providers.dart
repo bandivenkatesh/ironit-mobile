@@ -1,5 +1,7 @@
 /// Category Providers for Riverpod
 /// Manages category-related state using mock repositories
+library;
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/repositories/mock_category_repository.dart';
@@ -24,7 +26,8 @@ final featuredCategoriesProvider = FutureProvider<List<Category>>((ref) async {
 });
 
 /// Category by ID Provider
-final categoryByIdProvider = FutureProvider.family<Category?, String>((ref, id) async {
+final categoryByIdProvider =
+    FutureProvider.family<Category?, String>((ref, id) async {
   final repository = ref.watch(categoryRepositoryProvider);
   return repository.getCategoryById(id);
 });

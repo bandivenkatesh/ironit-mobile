@@ -1,5 +1,7 @@
 /// Promotion Repository Abstract Interface
 /// Defines the contract for promotion data access
+library;
+
 import '../models/promotion.dart';
 
 abstract class PromotionRepository {

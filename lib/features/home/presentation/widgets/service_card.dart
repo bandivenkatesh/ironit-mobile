@@ -1,5 +1,7 @@
 /// Service Card Widget
 /// Displays a service with image, name, rating, price, and duration
+library;
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_spacing.dart';
@@ -32,10 +34,11 @@ class ServiceCard extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppSpacing.medium),
         child: Padding(
-          padding: EdgeInsets.all(isCompact ? AppSpacing.small : AppSpacing.medium),
+          padding:
+              EdgeInsets.all(isCompact ? AppSpacing.small : AppSpacing.medium),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: <Widget>[
               // Service Image
               ClipRRect(
                 borderRadius: BorderRadius.circular(AppSpacing.small),
@@ -44,10 +47,12 @@ class ServiceCard extends StatelessWidget {
                   height: isCompact ? 100 : 120,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
+                  errorBuilder: (BuildContext context, Object error,
+                      StackTrace? stackTrace) {
                     return Container(
                       height: isCompact ? 100 : 120,
-                      color: Theme.of(context).colorScheme.surfaceVariant,
+                      color:
+                          Theme.of(context).colorScheme.surfaceContainerHighest,
                       child: Icon(
                         Icons.iron_outlined,
                         size: 40,
@@ -55,11 +60,13 @@ class ServiceCard extends StatelessWidget {
                       ),
                     );
                   },
-                  loadingBuilder: (context, child, loadingProgress) {
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent? loadingProgress) {
                     if (loadingProgress == null) return child;
                     return Container(
                       height: isCompact ? 100 : 120,
-                      color: Theme.of(context).colorScheme.surfaceVariant,
+                      color:
+                          Theme.of(context).colorScheme.surfaceContainerHighest,
                       child: Center(
                         child: CircularProgressIndicator(
                           value: loadingProgress.expectedTotalBytes != null
@@ -72,7 +79,7 @@ class ServiceCard extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(height: AppSpacing.small),
+              const SizedBox(height: AppSpacing.small),
 
               // Service Info
               Text(
@@ -83,24 +90,24 @@ class ServiceCard extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              SizedBox(height: AppSpacing.xSmall),
+              const SizedBox(height: AppSpacing.xSmall),
 
               // Rating and Reviews
               Row(
-                children: [
-                  Icon(
+                children: <Widget>[
+                  const Icon(
                     Icons.star,
                     color: Colors.amber,
                     size: 16,
                   ),
-                  SizedBox(width: AppSpacing.xSmall),
+                  const SizedBox(width: AppSpacing.xSmall),
                   Text(
                     service.rating.toString(),
                     style: AppTypography.caption.copyWith(
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(width: AppSpacing.xSmall),
+                  const SizedBox(width: AppSpacing.xSmall),
                   Text(
                     '(${service.reviewCount} reviews)',
                     style: AppTypography.caption.copyWith(
@@ -109,12 +116,12 @@ class ServiceCard extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: AppSpacing.small),
+              const SizedBox(height: AppSpacing.small),
 
               // Price and Duration
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                children: <Widget>[
                   Text(
                     '₹${service.price.toStringAsFixed(0)}',
                     style: AppTypography.subtitle1.copyWith(
@@ -123,13 +130,13 @@ class ServiceCard extends StatelessWidget {
                     ),
                   ),
                   Row(
-                    children: [
+                    children: <Widget>[
                       Icon(
                         Icons.timer_outlined,
                         size: 16,
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
-                      SizedBox(width: AppSpacing.xSmall),
+                      const SizedBox(width: AppSpacing.xSmall),
                       Text(
                         '${service.estimatedDuration.inMinutes} min',
                         style: AppTypography.caption.copyWith(
@@ -141,8 +148,8 @@ class ServiceCard extends StatelessWidget {
                 ],
               ),
 
-              if (showFavorite && !isCompact) ...[
-                SizedBox(height: AppSpacing.small),
+              if (showFavorite && !isCompact) ...<Widget>[
+                const SizedBox(height: AppSpacing.small),
                 // Favorite Button
                 Align(
                   alignment: Alignment.centerRight,

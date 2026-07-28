@@ -80,7 +80,7 @@ class Promotion {
 
   /// Check if promotion is currently valid
   bool get isValid {
-    final now = DateTime.now();
+    final DateTime now = DateTime.now();
     return isActive && now.isAfter(startDate) && now.isBefore(endDate);
   }
 
@@ -90,29 +90,29 @@ class Promotion {
     if (identical(this, other)) return true;
 
     return other is Promotion &&
-      other.id == id &&
-      other.title == title &&
-      other.subtitle == subtitle &&
-      other.imageUrl == imageUrl &&
-      other.actionUrl == actionUrl &&
-      other.actionText == actionText &&
-      other.startDate == startDate &&
-      other.endDate == endDate &&
-      other.isActive == isActive;
+        other.id == id &&
+        other.title == title &&
+        other.subtitle == subtitle &&
+        other.imageUrl == imageUrl &&
+        other.actionUrl == actionUrl &&
+        other.actionText == actionText &&
+        other.startDate == startDate &&
+        other.endDate == endDate &&
+        other.isActive == isActive;
   }
 
   /// Hash code for promotion
   @override
   int get hashCode {
     return id.hashCode ^
-      title.hashCode ^
-      subtitle.hashCode ^
-      imageUrl.hashCode ^
-      actionUrl.hashCode ^
-      actionText.hashCode ^
-      startDate.hashCode ^
-      endDate.hashCode ^
-      isActive.hashCode;
+        title.hashCode ^
+        subtitle.hashCode ^
+        imageUrl.hashCode ^
+        actionUrl.hashCode ^
+        actionText.hashCode ^
+        startDate.hashCode ^
+        endDate.hashCode ^
+        isActive.hashCode;
   }
 
   /// Sample factory for testing
@@ -132,8 +132,8 @@ class Promotion {
 
   /// Sample list of promotions for testing
   static List<Promotion> samples() {
-    final now = DateTime.now();
-    return [
+    final DateTime now = DateTime.now();
+    return <Promotion>[
       Promotion(
         id: 'promo-1',
         title: 'Summer Special',

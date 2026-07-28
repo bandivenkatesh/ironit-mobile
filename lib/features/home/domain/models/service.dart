@@ -89,7 +89,8 @@ class Service {
       rating: (map['rating'] as num).toDouble(),
       reviewCount: map['reviewCount'] as int,
       imageUrl: map['imageUrl'] as String,
-      estimatedDuration: Duration(milliseconds: map['estimatedDuration'] as int),
+      estimatedDuration:
+          Duration(milliseconds: map['estimatedDuration'] as int),
       isFeatured: map['isFeatured'] as bool? ?? false,
       isPopular: map['isPopular'] as bool? ?? false,
       createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt'] as int),
@@ -102,35 +103,35 @@ class Service {
     if (identical(this, other)) return true;
 
     return other is Service &&
-      other.id == id &&
-      other.name == name &&
-      other.categoryId == categoryId &&
-      other.description == description &&
-      other.price == price &&
-      other.rating == rating &&
-      other.reviewCount == reviewCount &&
-      other.imageUrl == imageUrl &&
-      other.estimatedDuration == estimatedDuration &&
-      other.isFeatured == isFeatured &&
-      other.isPopular == isPopular &&
-      other.createdAt == createdAt;
+        other.id == id &&
+        other.name == name &&
+        other.categoryId == categoryId &&
+        other.description == description &&
+        other.price == price &&
+        other.rating == rating &&
+        other.reviewCount == reviewCount &&
+        other.imageUrl == imageUrl &&
+        other.estimatedDuration == estimatedDuration &&
+        other.isFeatured == isFeatured &&
+        other.isPopular == isPopular &&
+        other.createdAt == createdAt;
   }
 
   /// Hash code for service
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      categoryId.hashCode ^
-      description.hashCode ^
-      price.hashCode ^
-      rating.hashCode ^
-      reviewCount.hashCode ^
-      imageUrl.hashCode ^
-      estimatedDuration.hashCode ^
-      isFeatured.hashCode ^
-      isPopular.hashCode ^
-      createdAt.hashCode;
+        name.hashCode ^
+        categoryId.hashCode ^
+        description.hashCode ^
+        price.hashCode ^
+        rating.hashCode ^
+        reviewCount.hashCode ^
+        imageUrl.hashCode ^
+        estimatedDuration.hashCode ^
+        isFeatured.hashCode ^
+        isPopular.hashCode ^
+        createdAt.hashCode;
   }
 
   /// Sample factory for testing
@@ -139,7 +140,8 @@ class Service {
       id: 'sample-service-1',
       name: 'Premium Shirt Ironing',
       categoryId: 'ironing',
-      description: 'Professional ironing service for shirts with premium finish',
+      description:
+          'Professional ironing service for shirts with premium finish',
       price: 299.0,
       rating: 4.8,
       reviewCount: 128,
@@ -153,12 +155,13 @@ class Service {
 
   /// Sample list of services for testing
   static List<Service> samples() {
-    return [
+    return <Service>[
       Service(
         id: 'service-1',
         name: 'Premium Shirt Ironing',
         categoryId: 'ironing',
-        description: 'Professional ironing service for shirts with premium finish',
+        description:
+            'Professional ironing service for shirts with premium finish',
         price: 299.0,
         rating: 4.8,
         reviewCount: 128,
@@ -186,7 +189,8 @@ class Service {
         id: 'service-3',
         name: 'Business Suit Steaming',
         categoryId: 'ironing',
-        description: 'Delicate steaming for business suits to maintain fabric quality',
+        description:
+            'Delicate steaming for business suits to maintain fabric quality',
         price: 799.0,
         rating: 4.9,
         reviewCount: 210,

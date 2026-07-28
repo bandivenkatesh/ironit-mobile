@@ -1,5 +1,7 @@
 /// Promotion Banner Widget
 /// Displays a promotional banner with image, title, subtitle, and action button
+library;
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_spacing.dart';
@@ -25,7 +27,7 @@ class PromotionBanner extends StatelessWidget {
       elevation: 0,
       margin: EdgeInsets.zero,
       child: Stack(
-        children: [
+        children: <Widget>[
           // Banner Image
           ClipRRect(
             borderRadius: BorderRadius.circular(AppSpacing.medium),
@@ -34,7 +36,8 @@ class PromotionBanner extends StatelessWidget {
               height: 160,
               width: double.infinity,
               fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
+              errorBuilder:
+                  (BuildContext context, Object error, StackTrace? stackTrace) {
                 return Container(
                   height: 160,
                   color: Theme.of(context).colorScheme.primaryContainer,
@@ -45,7 +48,8 @@ class PromotionBanner extends StatelessWidget {
                   ),
                 );
               },
-              loadingBuilder: (context, child, loadingProgress) {
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) return child;
                 return Container(
                   height: 160,
@@ -72,9 +76,9 @@ class PromotionBanner extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [
+                colors: <Color>[
                   Colors.transparent,
-                  Colors.black.withOpacity(0.6),
+                  Colors.black.withValues(alpha: 0.6),
                 ],
               ),
             ),
@@ -87,7 +91,7 @@ class PromotionBanner extends StatelessWidget {
             bottom: AppSpacing.medium,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 // Promotion Title
                 Text(
                   promotion.title,
@@ -96,16 +100,16 @@ class PromotionBanner extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: AppSpacing.xSmall),
+                const SizedBox(height: AppSpacing.xSmall),
 
                 // Promotion Subtitle
                 Text(
                   promotion.subtitle,
                   style: AppTypography.bodyText1.copyWith(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.white.withValues(alpha: 0.9),
                   ),
                 ),
-                SizedBox(height: AppSpacing.small),
+                const SizedBox(height: AppSpacing.small),
 
                 // Action Button
                 ElevatedButton(
@@ -116,7 +120,7 @@ class PromotionBanner extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppSpacing.small),
                     ),
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.medium,
                       vertical: AppSpacing.xSmall,
                     ),
@@ -128,12 +132,12 @@ class PromotionBanner extends StatelessWidget {
           ),
 
           // Promotion Tag
-          if (promotion.isValid) ...[
+          if (promotion.isValid) ...<Widget>[
             Positioned(
               top: AppSpacing.small,
               right: AppSpacing.small,
               child: Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: AppSpacing.xSmall,
                   vertical: AppSpacing.xxSmall,
                 ),

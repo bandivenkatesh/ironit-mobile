@@ -1,12 +1,14 @@
 /// Mock promotions data for Ironit
 /// Provides sample promotion data for development and testing
+library;
+
 import '../../domain/models/promotion.dart';
 
 class MockPromotions {
   /// Get all mock promotions
   static List<Promotion> getAllPromotions() {
-    final now = DateTime.now();
-    return [
+    final DateTime now = DateTime.now();
+    return <Promotion>[
       Promotion(
         id: 'promo-1',
         title: 'Summer Special',
@@ -67,13 +69,16 @@ class MockPromotions {
 
   /// Get active promotions
   static List<Promotion> getActivePromotions() {
-    return getAllPromotions().where((promotion) => promotion.isValid).toList();
+    return getAllPromotions()
+        .where((Promotion promotion) => promotion.isValid)
+        .toList();
   }
 
   /// Get promotion by ID
   static Promotion? getPromotionById(String id) {
     try {
-      return getAllPromotions().firstWhere((promotion) => promotion.id == id);
+      return getAllPromotions()
+          .firstWhere((Promotion promotion) => promotion.id == id);
     } catch (e) {
       return null;
     }

@@ -72,30 +72,30 @@ class Category {
     if (identical(this, other)) return true;
 
     return other is Category &&
-      other.id == id &&
-      other.name == name &&
-      other.description == description &&
-      other.icon == icon &&
-      other.imageUrl == imageUrl &&
-      other.serviceCount == serviceCount &&
-      other.isFeatured == isFeatured;
+        other.id == id &&
+        other.name == name &&
+        other.description == description &&
+        other.icon == icon &&
+        other.imageUrl == imageUrl &&
+        other.serviceCount == serviceCount &&
+        other.isFeatured == isFeatured;
   }
 
   /// Hash code for category
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      description.hashCode ^
-      icon.hashCode ^
-      imageUrl.hashCode ^
-      serviceCount.hashCode ^
-      isFeatured.hashCode;
+        name.hashCode ^
+        description.hashCode ^
+        icon.hashCode ^
+        imageUrl.hashCode ^
+        serviceCount.hashCode ^
+        isFeatured.hashCode;
   }
 
   /// Sample factory for testing
   factory Category.sample() {
-    return Category(
+    return const Category(
       id: 'category-1',
       name: 'Shirt Ironing',
       description: 'Premium ironing services for all types of shirts',
@@ -108,8 +108,8 @@ class Category {
 
   /// Sample list of categories for testing
   static List<Category> samples() {
-    return [
-      Category(
+    return <Category>[
+      const Category(
         id: 'category-1',
         name: 'Shirt Ironing',
         description: 'Premium ironing services for all types of shirts',
@@ -118,25 +118,27 @@ class Category {
         serviceCount: 12,
         isFeatured: true,
       ),
-      Category(
+      const Category(
         id: 'category-2',
         name: 'Formal Wear',
-        description: 'Specialized ironing for suits, dresses, and formal attire',
+        description:
+            'Specialized ironing for suits, dresses, and formal attire',
         icon: 'suit',
         imageUrl: 'https://example.com/images/formal-category.jpg',
         serviceCount: 8,
         isFeatured: true,
       ),
-      Category(
+      const Category(
         id: 'category-3',
         name: 'Casual Wear',
-        description: 'Everyday ironing for t-shirts, jeans, and casual clothing',
+        description:
+            'Everyday ironing for t-shirts, jeans, and casual clothing',
         icon: 'tshirt',
         imageUrl: 'https://example.com/images/casual-category.jpg',
         serviceCount: 15,
         isFeatured: false,
       ),
-      Category(
+      const Category(
         id: 'category-4',
         name: 'Delicate Fabrics',
         description: 'Gentle steaming for silk, lace, and delicate materials',
@@ -145,19 +147,21 @@ class Category {
         serviceCount: 6,
         isFeatured: false,
       ),
-      Category(
+      const Category(
         id: 'category-5',
         name: 'Household Linens',
-        description: 'Ironing services for bed sheets, tablecloths, and curtains',
+        description:
+            'Ironing services for bed sheets, tablecloths, and curtains',
         icon: 'bed',
         imageUrl: 'https://example.com/images/linens-category.jpg',
         serviceCount: 10,
         isFeatured: true,
       ),
-      Category(
+      const Category(
         id: 'category-6',
         name: 'Business Attire',
-        description: 'Professional ironing for office wear and business clothing',
+        description:
+            'Professional ironing for office wear and business clothing',
         icon: 'briefcase',
         imageUrl: 'https://example.com/images/business-category.jpg',
         serviceCount: 9,

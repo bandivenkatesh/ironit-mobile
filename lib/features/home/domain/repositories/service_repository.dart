@@ -1,5 +1,7 @@
 /// Service Repository Abstract Interface
 /// Defines the contract for service data access
+library;
+
 import '../models/service.dart';
 
 abstract class ServiceRepository {

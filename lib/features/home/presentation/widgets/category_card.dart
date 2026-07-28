@@ -1,5 +1,7 @@
 /// Category Card Widget
 /// Displays a category with icon, name, and service count
+library;
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_spacing.dart';
@@ -25,10 +27,10 @@ class CategoryCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppSpacing.medium),
       child: Container(
         width: 100,
-        padding: EdgeInsets.all(AppSpacing.small),
+        padding: const EdgeInsets.all(AppSpacing.small),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             // Category Icon
             Container(
               width: 56,
@@ -36,7 +38,7 @@ class CategoryCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: isSelected
                     ? Theme.of(context).colorScheme.primaryContainer
-                    : Theme.of(context).colorScheme.surfaceVariant,
+                    : Theme.of(context).colorScheme.surfaceContainerHighest,
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -47,7 +49,7 @@ class CategoryCard extends StatelessWidget {
                 size: 28,
               ),
             ),
-            SizedBox(height: AppSpacing.xSmall),
+            const SizedBox(height: AppSpacing.xSmall),
 
             // Category Name
             Text(
@@ -62,7 +64,7 @@ class CategoryCard extends StatelessWidget {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-            SizedBox(height: AppSpacing.xSmall),
+            const SizedBox(height: AppSpacing.xSmall),
 
             // Service Count
             Text(

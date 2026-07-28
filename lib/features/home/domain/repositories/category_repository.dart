@@ -1,5 +1,7 @@
 /// Category Repository Abstract Interface
 /// Defines the contract for category data access
+library;
+
 import '../models/category.dart';
 
 abstract class CategoryRepository {

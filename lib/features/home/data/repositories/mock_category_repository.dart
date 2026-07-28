@@ -1,5 +1,7 @@
 /// Mock Category Repository Implementation
 /// Provides mock data for category operations
+library;
+
 import '../../domain/models/category.dart';
 import '../../domain/repositories/category_repository.dart';
 import '../mock/categories.dart';

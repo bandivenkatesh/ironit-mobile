@@ -1,5 +1,7 @@
 /// Promotion Providers for Riverpod
 /// Manages promotion-related state using mock repositories
+library;
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/repositories/mock_promotion_repository.dart';
@@ -24,7 +26,8 @@ final activePromotionsProvider = FutureProvider<List<Promotion>>((ref) async {
 });
 
 /// Promotion by ID Provider
-final promotionByIdProvider = FutureProvider.family<Promotion?, String>((ref, id) async {
+final promotionByIdProvider =
+    FutureProvider.family<Promotion?, String>((ref, id) async {
   final repository = ref.watch(promotionRepositoryProvider);
   return repository.getPromotionById(id);
 });

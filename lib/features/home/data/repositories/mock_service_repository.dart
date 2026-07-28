@@ -1,5 +1,7 @@
 /// Mock Service Repository Implementation
 /// Provides mock data for service operations
+library;
+
 import '../../domain/models/service.dart';
 import '../../domain/repositories/service_repository.dart';
 import '../mock/services.dart';

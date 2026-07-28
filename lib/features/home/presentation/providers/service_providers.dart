@@ -1,5 +1,7 @@
 /// Service Providers for Riverpod
 /// Manages service-related state using mock repositories
+library;
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/repositories/mock_service_repository.dart';
@@ -30,13 +32,15 @@ final popularServicesProvider = FutureProvider<List<Service>>((ref) async {
 });
 
 /// Search Services Provider
-final searchServicesProvider = FutureProvider.family<List<Service>, String>((ref, query) async {
+final searchServicesProvider =
+    FutureProvider.family<List<Service>, String>((ref, query) async {
   final repository = ref.watch(serviceRepositoryProvider);
   return repository.searchServices(query);
 });
 
 /// Service by ID Provider
-final serviceByIdProvider = FutureProvider.family<Service?, String>((ref, id) async {
+final serviceByIdProvider =
+    FutureProvider.family<Service?, String>((ref, id) async {
   final repository = ref.watch(serviceRepositoryProvider);
   return repository.getServiceById(id);
 });

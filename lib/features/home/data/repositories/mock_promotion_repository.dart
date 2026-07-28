@@ -1,5 +1,7 @@
 /// Mock Promotion Repository Implementation
 /// Provides mock data for promotion operations
+library;
+
 import '../../domain/models/promotion.dart';
 import '../../domain/repositories/promotion_repository.dart';
 import '../mock/promotions.dart';
