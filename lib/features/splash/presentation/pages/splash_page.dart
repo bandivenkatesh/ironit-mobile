@@ -61,14 +61,18 @@ class _SplashPageState extends State<SplashPage>
           final bool onboardingComplete =
               AppPreferences.getOnboardingComplete();
 
-          if (onboardingComplete) {
-            context.go('/welcome');
-          } else {
-            context.go('/onboarding');
+          if (mounted) {
+            if (onboardingComplete) {
+              context.go('/welcome');
+            } else {
+              context.go('/onboarding');
+            }
           }
         } catch (e) {
           // Fallback to welcome screen if preferences initialization fails
-          context.go('/welcome');
+          if (mounted) {
+            context.go('/welcome');
+          }
         }
       }
     });

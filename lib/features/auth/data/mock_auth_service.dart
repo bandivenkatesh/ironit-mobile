@@ -25,7 +25,7 @@ class MockAuthService {
     required String password,
     bool rememberMe = false,
   }) async {
-    await Future.delayed(_networkDelay);
+    await Future<void>.delayed(_networkDelay);
 
     // Basic validation
     if (email.isEmpty || password.isEmpty) {
@@ -73,7 +73,7 @@ class MockAuthService {
     required String phone,
     required String password,
   }) async {
-    await Future.delayed(_networkDelay);
+    await Future<void>.delayed(_networkDelay);
 
     // Validation
     if (name.isEmpty || email.isEmpty || phone.isEmpty || password.isEmpty) {
@@ -123,7 +123,7 @@ class MockAuthService {
 
   /// Simulates password reset
   Future<MockAuthResult> forgotPassword(String email) async {
-    await Future.delayed(_networkDelay);
+    await Future<void>.delayed(_networkDelay);
 
     if (email.isEmpty) {
       return MockAuthResult(
@@ -155,7 +155,7 @@ class MockAuthService {
 
   /// Simulates guest continuation
   Future<MockAuthResult> continueAsGuest() async {
-    await Future.delayed(_networkDelay);
+    await Future<void>.delayed(_networkDelay);
 
     return MockAuthResult(
       success: true,
@@ -166,7 +166,7 @@ class MockAuthService {
 
   /// Simulates logout
   Future<bool> logout() async {
-    await Future.delayed(_networkDelay);
+    await Future<void>.delayed(_networkDelay);
     return true;
   }
 }

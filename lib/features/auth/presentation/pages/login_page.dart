@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     // Simulate network request
-    await Future.delayed(const Duration(milliseconds: 800));
+    await Future<void>.delayed(const Duration(milliseconds: 800));
 
     if (mounted) {
       // In real app, this would call auth service
