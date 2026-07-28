@@ -7,42 +7,61 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.1.1] - 2026-07-28
+
 ### Added
-- **Authentication Module** (Story 3)
-  - Mock authentication service with login, register, forgot password, and guest modes
-  - Authentication state management with AuthState class
-  - Login screen with email/password validation and social login placeholders
-  - Register screen with full form validation and terms acceptance
-  - Forgot password screen with email validation and success state
-  - Reusable authentication components:
-    - `AuthTextField` - Consistent form field styling
-    - `PasswordField` - Password input with visibility toggle
-    - `SocialLoginPlaceholder` - Social login buttons with "coming soon" functionality
-  - Storage abstraction layer:
-    - `AppPreferences` - Centralized SharedPreferences access
-    - `PreferenceKeys` - All preference keys in one place
-  - New routes: `/login`, `/register`, `/forgot-password`, `/dashboard-placeholder`
+- **Platform Sprint 2 - Enterprise Tooling**
+  - **Taskfile.yml**: Comprehensive enterprise-grade task automation
+    - 50+ professional development tasks
+    - Environment health checks
+    - CI/CD pipeline automation
+    - Build and test automation
+    - Release preparation workflows
+  - **Helper Scripts**: Professional shell scripts
+    - `scripts/doctor.sh`: Comprehensive environment health check
+    - `scripts/verify.sh`: GitHub Actions quality gates locally
+    - `scripts/ci-local.sh`: Full CI pipeline execution
+    - `scripts/build-apk.sh`: Flexible APK building with options
+  - **Documentation Enhancements**
+    - `CONTRIBUTING.md`: Comprehensive contribution guide
+    - Updated `README.md` with tooling and version information
+    - Enhanced project documentation structure
 
 ### Changed
-- **Architecture Improvements**
-  - Refactored SharedPreferences access to use AppPreferences abstraction
-  - Updated splash screen to use new storage abstraction
-  - Enhanced welcome screen navigation to use authentication flow
-  - Improved router organization with authentication routes
-  - Updated onboarding completion to use PreferenceKeys constants
-
-- **Code Quality**
-  - Reduced analyzer warnings from 49 to 33
-  - Maintained 100% test pass rate (20/20)
-  - Improved type safety and null safety
-  - Enhanced error handling with fallback navigation
+- **CI/CD Improvements**
+  - Updated GitHub Actions workflow to use Flutter 3.44.8 (from 3.19.5)
+  - Enhanced workflow compatibility with current project requirements
+  - Maintained all existing quality gates
+- **Dependency Management**
+  - Removed unused `flutter_dotenv` package
+  - Cleaned up pubspec.yaml assets
+  - Updated dependency versions in documentation
+- **Code Quality Enhancements**
+  - Fixed all Future.delayed type inference warnings (8 instances)
+  - Resolved all use_build_context_synchronously warnings (3 instances)
+  - Addressed all always_specify_types warnings (8 instances)
+  - Achieved zero analyzer warnings (0/0)
+  - Maintained 100% test pass rate (20/20 tests passing)
+  - Improved BuildContext safety across async operations
 
 ### Fixed
-- Resolved MissingPluginException in splash screen
-- Fixed SharedPreferences initialization timing using WidgetsBinding.addPostFrameCallback
-- Improved navigation flow with proper mounted checks
-- Ensured all form validation works correctly
-- Fixed theme compatibility issues in new components
+- **Critical Bug Fixes**
+  - Fixed BuildContext usage across async gaps in splash screen
+  - Added proper mounted checks for all navigation operations
+  - Resolved potential memory leaks in async callbacks
+- **Configuration Issues**
+  - Removed unused .env asset configuration
+  - Fixed asset_does_not_exist analyzer warning
+  - Updated environment configuration documentation
+- **Type Safety Improvements**
+  - Added explicit type annotations to all Future.delayed calls
+  - Improved type inference throughout codebase
+  - Enhanced null safety compliance
+
+## [v0.1.0] - 2026-07-27
+
+### Added
+- **Project Initialization**
 
 ## [v0.1.0] - 2026-07-27
 

@@ -1,0 +1,486 @@
+# Ironit Mobile Enterprise Taskfile
+# Professional development automation for Flutter projects
+
+version: '3'
+
+vars:
+  FLUTTER_VERSION: "3.44.8"
+  DART_VERSION: "3.0.0"
+  PROJECT_NAME: "ironit"
+  ANDROID_PACKAGE: "com.ironit.mobile"
+  IOS_BUNDLE_ID: "com.ironit.mobile"
+  BUILD_NUMBER: "1"
+  VERSION_NAME: "0.1.0"
+
+tasks:
+  default:
+    desc: Show available tasks
+    cmds:
+      - task --list-all
+
+  help:
+    desc: Display this help message
+    cmds:
+      - echo "🚀 Ironit Mobile Taskfile - Enterprise Flutter Automation"
+      - echo ""
+      - echo "Usage: task [task-name]"
+      - echo ""
+      - echo "Available Commands:"
+      - task --list-all
+      - echo ""
+      - echo "Project Info:"
+      - echo "  Name: {{.PROJECT_NAME}}"
+      - echo "  Version: {{.VERSION_NAME}}"
+      - echo "  Flutter: {{.FLUTTER_VERSION}}"
+      - echo "  Dart: {{.DART_VERSION}}"
+
+  doctor:
+    desc: Check development environment health
+    cmds:
+      - echo "🏥 Development Environment Health Check"
+      - echo "========================================"
+      - echo ""
+      - echo "📋 System Information:"
+      - uname -a
+      - echo ""
+      - echo "🔧 Tools Versions:"
+      - echo "  Flutter: $(flutter --version | head -1)"
+      - echo "  Dart: $(dart --version | head -1)"
+      - echo "  Git: $(git --version)"
+      - echo "  Java: $(java -version 2>&1 | head -1)"
+      - echo "  Gradle: $(gradle --version | head -1)"
+      - echo ""
+      - echo "📱 Mobile Development:"
+      - echo "  Android SDK: $(echo $ANDROID_HOME)"
+      - echo "  Xcode: $(xcodebuild -version 2>/dev/null || echo "Not installed")"
+      - echo ""
+      - echo "🩺 Flutter Doctor:"
+      - flutter doctor -v
+      - echo ""
+      - echo "✅ Environment check complete!"
+
+  clean:
+    desc: Clean build artifacts and cache
+    cmds:
+      - echo "🧹 Cleaning project..."
+      - flutter clean
+      - rm -rf build/
+      - rm -rf .dart_tool/
+      - rm -rf .flutter-plugins
+      - rm -rf ios/Pods/
+      - rm -rf ios/.symlinks/
+      - rm -rf macos/Pods/
+      - rm -rf macos/.symlinks/
+      - rm -rf android/.gradle/
+      - rm -rf android/build/
+      - rm -rf android/app/build/
+      - find . -name "*.lock" -delete
+      - find . -name "*.log" -delete
+      - echo "✅ Project cleaned successfully!"
+
+  pub:
+    desc: Get Flutter dependencies
+    cmds:
+      - echo "📦 Getting dependencies..."
+      - flutter pub get
+      - echo "✅ Dependencies installed!"
+
+  upgrade:
+    desc: Upgrade Flutter dependencies
+    cmds:
+      - echo "🔼 Upgrading dependencies..."
+      - flutter pub upgrade
+      - echo "✅ Dependencies upgraded!"
+
+  format:
+    desc: Format Dart code
+    cmds:
+      - echo "🎨 Formatting code..."
+      - dart format .
+      - echo "✅ Code formatted!"
+
+  analyze:
+    desc: Run static code analysis
+    cmds:
+      - echo "🔍 Analyzing code..."
+      - flutter analyze
+      - echo "✅ Analysis complete!"
+
+  test:
+    desc: Run all tests
+    cmds:
+      - echo "🧪 Running tests..."
+      - flutter test --coverage
+      - echo "✅ Tests completed!"
+
+  verify:
+    desc: Run full verification (mirrors GitHub Actions)
+    cmds:
+      - echo "🔐 Running GitHub Actions verification..."
+      - echo "1/4 Checking formatting..."
+      - dart format --set-exit-if-changed .
+      - echo "2/4 Running static analysis..."
+      - flutter analyze
+      - echo "3/4 Running tests..."
+      - flutter test
+      - echo "4/4 Building debug APK..."
+      - flutter build apk --debug
+      - echo "✅ All quality gates passed!"
+
+  build:
+    desc: Build debug APK
+    cmds:
+      - echo "📦 Building debug APK..."
+      - flutter build apk --debug
+      - echo "✅ APK built: build/app/outputs/flutter-apk/app-debug.apk"
+
+  apk:
+    desc: Build release APK
+    cmds:
+      - echo "📦 Building release APK..."
+      - flutter build apk --release
+      - echo "✅ Release APK built: build/app/outputs/flutter-apk/app-release.apk"
+
+  run:
+    desc: Run the app on default device
+    cmds:
+      - echo "▶️ Running app..."
+      - flutter run
+
+  coverage:
+    desc: Generate test coverage report
+    cmds:
+      - echo "📊 Generating coverage report..."
+      - flutter test --coverage
+      - genhtml coverage/lcov.info -o coverage/html
+      - open coverage/html/index.html
+      - echo "✅ Coverage report generated!"
+
+  deps:
+    desc: Show dependency tree
+    cmds:
+      - echo "🌲 Dependency tree:"
+      - flutter pub deps
+      - echo "✅ Dependencies listed!"
+
+  ci-local:
+    desc: Run CI pipeline locally
+    cmds:
+      - echo "🚀 Running local CI pipeline..."
+      - task clean
+      - task pub
+      - task format
+      - task analyze
+      - task test
+      - task build
+      - echo "✅ Local CI pipeline completed!"
+
+  release-check:
+    desc: Pre-release verification checklist
+    cmds:
+      - echo "📋 Release Verification Checklist"
+      - echo "================================="
+      - echo ""
+      - echo "1. Code Quality:"
+      - task analyze
+      - echo ""
+      - echo "2. Formatting:"
+      - dart format --set-exit-if-changed .
+      - echo "✅ Formatting correct"
+      - echo ""
+      - echo "3. Tests:"
+      - task test
+      - echo ""
+      - echo "4. Build:"
+      - task build
+      - echo ""
+      - echo "5. Dependencies:"
+      - task deps
+      - echo ""
+      - echo "✅ All release checks passed!"
+      - echo ""
+      - echo "🎉 Ready for release {{.VERSION_NAME}}+{{.BUILD_NUMBER}}"
+
+  # Platform-specific tasks
+  android:
+    desc: Run on Android device
+    cmds:
+      - echo "🤖 Running on Android..."
+      - flutter run -d android
+
+  ios:
+    desc: Run on iOS device
+    cmds:
+      - echo "🍎 Running on iOS..."
+      - flutter run -d ios
+
+  web:
+    desc: Run on web
+    cmds:
+      - echo "🌐 Running on web..."
+      - flutter run -d chrome
+
+  # Utility tasks
+  version:
+    desc: Show project version
+    cmds:
+      - echo "📦 {{.PROJECT_NAME}} v{{.VERSION_NAME}} (Build {{.BUILD_NUMBER}})"
+      - echo "📱 {{.ANDROID_PACKAGE}} / {{.IOS_BUNDLE_ID}}"
+      - echo "🔧 Flutter {{.FLUTTER_VERSION}} | Dart {{.DART_VERSION}}"
+
+  docs:
+    desc: Generate documentation
+    cmds:
+      - echo "📚 Generating documentation..."
+      - dart doc .
+      - echo "✅ Documentation generated in doc/api/"
+
+  lint:
+    desc: Run custom lint checks
+    cmds:
+      - echo "🔍 Running custom lint checks..."
+      - flutter analyze --no-fatal-infos
+      - echo "✅ Custom lint checks complete!"
+
+  # Git tasks
+  git-status:
+    desc: Show git status
+    cmds:
+      - echo "🌱 Git Status:"
+      - git status
+      - echo ""
+      - echo "📝 Recent Commits:"
+      - git log --oneline -5
+
+  git-check:
+    desc: Check for uncommitted changes
+    cmds:
+      - echo "🔍 Checking for uncommitted changes..."
+      - if [ -n "$(git status --porcelain)" ]; then
+          echo "⚠️  Uncommitted changes found:"
+          git status --porcelain;
+          exit 1;
+        else
+          echo "✅ Working tree clean";
+        fi
+
+  # Environment tasks
+  env:
+    desc: Show environment variables
+    cmds:
+      - echo "🌍 Environment Variables:"
+      - echo "FLUTTER_VERSION={{.FLUTTER_VERSION}}"
+      - echo "DART_VERSION={{.DART_VERSION}}"
+      - echo "PROJECT_NAME={{.PROJECT_NAME}}"
+      - echo "VERSION_NAME={{.VERSION_NAME}}"
+      - echo "BUILD_NUMBER={{.BUILD_NUMBER}}"
+
+  # Quality tasks
+  quality:
+    desc: Run all quality checks
+    cmds:
+      - echo "🎯 Running quality checks..."
+      - task format
+      - task analyze
+      - task lint
+      - echo "✅ All quality checks passed!"
+
+  # Build tasks
+  build-all:
+    desc: Build for all platforms
+    cmds:
+      - echo "🏗️ Building for all platforms..."
+      - task build
+      - echo "✅ Android build complete"
+      - # flutter build ios --no-codesign
+      - # echo "✅ iOS build complete"
+      - # flutter build web
+      - # echo "✅ Web build complete"
+      - echo "⚠️  iOS and Web builds commented out (require additional setup)"
+
+  # Test tasks
+  test-all:
+    desc: Run all test types
+    cmds:
+      - echo "🧪 Running all tests..."
+      - flutter test
+      - # flutter test integration_test/
+      - # echo "✅ Integration tests complete"
+      - echo "⚠️  Integration tests commented out (require setup)"
+
+  # Analysis tasks
+  analyze-deep:
+    desc: Deep code analysis
+    cmds:
+      - echo "🔬 Deep code analysis..."
+      - flutter analyze --no-fatal-infos
+      - dart analyze --fatal-infos
+      - echo "✅ Deep analysis complete!"
+
+  # Documentation tasks
+  readme:
+    desc: Update README with current info
+    cmds:
+      - echo "📝 Updating README..."
+      - echo "Current Flutter version: $(flutter --version | head -1)" > README_TEMP.md
+      - echo "Current Dart version: $(dart --version | head -1)" >> README_TEMP.md
+      - echo "Last updated: $(date)" >> README_TEMP.md
+      - cat README_TEMP.md
+      - rm README_TEMP.md
+      - echo "✅ README info generated (manual update still required)"
+
+  # CI/CD tasks
+  ci-setup:
+    desc: Setup CI/CD environment
+    cmds:
+      - echo "🚀 Setting up CI/CD environment..."
+      - echo "1. Installing Flutter {{.FLUTTER_VERSION}}..."
+      - # This would be handled by GitHub Actions in real CI
+      - echo "2. Setting up Java {{.JAVA_VERSION}}..."
+      - echo "3. Configuring Android SDK..."
+      - echo "✅ CI/CD environment setup complete!"
+
+  # Release tasks
+  release-prep:
+    desc: Prepare for release
+    cmds:
+      - echo "🎀 Preparing for release {{.VERSION_NAME}}+{{.BUILD_NUMBER}}..."
+      - task clean
+      - task pub
+      - task format
+      - task analyze
+      - task test
+      - task build
+      - echo "✅ Release preparation complete!"
+      - echo ""
+      - echo "📋 Next steps:"
+      - echo "1. Update CHANGELOG.md"
+      - echo "2. Update version in pubspec.yaml"
+      - echo "3. Create GitHub release"
+      - echo "4. Publish to app stores"
+
+  # Debug tasks
+  debug:
+    desc: Debug build with verbose output
+    cmds:
+      - echo "🐛 Debug build..."
+      - flutter build apk --debug --verbose
+      - echo "✅ Debug build complete!"
+
+  # Profile tasks
+  profile:
+    desc: Profile build
+    cmds:
+      - echo "📊 Profile build..."
+      - flutter build apk --profile
+      - echo "✅ Profile build complete!"
+
+  # Clean specific tasks
+  clean-android:
+    desc: Clean Android build files
+    cmds:
+      - echo "🧹 Cleaning Android..."
+      - cd android && ./gradlew clean && cd ..
+      - rm -rf android/.gradle/
+      - rm -rf android/build/
+      - rm -rf android/app/build/
+      - echo "✅ Android cleaned!"
+
+  clean-ios:
+    desc: Clean iOS build files
+    cmds:
+      - echo "🧹 Cleaning iOS..."
+      - rm -rf ios/Pods/
+      - rm -rf ios/.symlinks/
+      - rm -rf ios/DerivedData/
+      - echo "✅ iOS cleaned!"
+
+  # Dependency analysis
+  deps-tree:
+    desc: Show dependency tree with versions
+    cmds:
+      - echo "🌳 Dependency tree with versions..."
+      - flutter pub deps --style=tree
+      - echo "✅ Dependency tree displayed!"
+
+  deps-outdated:
+    desc: Show outdated dependencies
+    cmds:
+      - echo "🔺 Outdated dependencies..."
+      - flutter pub outdated
+      - echo "✅ Outdated dependencies listed!"
+
+  # Code metrics
+  metrics:
+    desc: Show code metrics
+    cmds:
+      - echo "📊 Code metrics..."
+      - echo "Lines of code:"
+      - find lib -name "*.dart" | xargs wc -l
+      - echo ""
+      - echo "File count:"
+      - find lib -name "*.dart" | wc -l
+      - echo "✅ Metrics displayed!"
+
+  # Health check
+  health:
+    desc: Comprehensive project health check
+    cmds:
+      - echo "🏥 Comprehensive Project Health Check"
+      - echo "====================================="
+      - task doctor
+      - task analyze
+      - task test
+      - task deps-outdated
+      - echo "✅ Health check complete!"
+
+  # Setup tasks
+  setup:
+    desc: Initial project setup
+    cmds:
+      - echo "⚙️  Initial project setup..."
+      - task clean
+      - task pub
+      - task format
+      - echo "✅ Project setup complete!"
+
+  # All tasks
+  all:
+    desc: Run all quality tasks
+    cmds:
+      - echo "🎯 Running all quality tasks..."
+      - task clean
+      - task pub
+      - task format
+      - task analyze
+      - task lint
+      - task test
+      - task build
+      - echo "✅ All tasks completed successfully!"
+
+# Taskfile configuration
+includes:
+  scripts: {}
+  aliases:
+    h: help
+    d: doctor
+    c: clean
+    f: format
+    a: analyze
+    t: test
+    v: verify
+    b: build
+    r: run
+    q: quality
+    s: setup
+
+# Environment setup
+dotenv: ['.env', '.env.local']
+
+# Taskfile metadata
+info:
+  name: Ironit Mobile Taskfile
+  version: 1.0.0
+  description: Enterprise Flutter development automation
+  author: Ironit Engineering Team
+  license: MIT

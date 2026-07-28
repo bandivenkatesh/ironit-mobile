@@ -6,7 +6,7 @@
 
 [![Flutter CI](https://github.com/bandivenkatesh/ironit-mobile/actions/workflows/flutter-ci.yml/badge.svg)](https://github.com/bandivenkatesh/ironit-mobile/actions/workflows/flutter-ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Flutter Version](https://img.shields.io/badge/Flutter-3.19.5-blue.svg)](https://flutter.dev)
+[![Flutter Version](https://img.shields.io/badge/Flutter-3.44.8-blue.svg)](https://flutter.dev)
 [![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Web-green.svg)](https://flutter.dev/multi-platform)
 
 ## 📱 Project Overview
@@ -41,7 +41,6 @@ Ironit Mobile is a premium, production-quality Flutter application that provides
 - **Networking**: Dio
 - **Dependency Injection**: Riverpod Providers
 - **Local Storage**: SharedPreferences
-- **Environment**: Flutter DotEnv
 - **Logging**: Logger
 
 ## 📁 Folder Structure
@@ -73,16 +72,15 @@ lib/
 
 | Category | Technology | Version |
 |----------|------------|---------|
-| **Framework** | Flutter | 3.19.5 |
+| **Framework** | Flutter | 3.44.8 |
 | **Language** | Dart | 3.0.0+ |
-| **State Management** | Riverpod | 2.4.9 |
-| **Navigation** | GoRouter | 13.0.0 |
-| **Networking** | Dio | 5.4.0 |
-| **Logging** | Logger | 2.0.2 |
-| **Environment** | Flutter DotEnv | 5.1.0 |
-| **Storage** | SharedPreferences | 2.2.2 |
+| **State Management** | Riverpod | 2.6.1 |
+| **Navigation** | GoRouter | 13.2.5 |
+| **Networking** | Dio | 5.11.0 |
+| **Logging** | Logger | 2.7.0 |
+| **Storage** | SharedPreferences | 2.5.5 |
 | **Testing** | Flutter Test | SDK |
-| **Linting** | Flutter Lints | 3.0.0 |
+| **Linting** | Flutter Lints | 3.0.2 |
 
 ## 📸 Screenshots
 
@@ -100,7 +98,7 @@ lib/
 
 ### Prerequisites
 
-- Flutter SDK 3.19.5+
+- Flutter SDK 3.44.8+
 - Dart SDK 3.0.0+
 - Java 17+ (for Android builds)
 - Xcode (for iOS builds)
@@ -121,7 +119,8 @@ lib/
 
 3. **Set up environment**:
    ```bash
-   cp .env.example .env
+   # Environment variables are optional (remove flutter_dotenv if unused)
+   # cp .env.example .env
    # Edit .env with your configuration
    ```
 
@@ -186,26 +185,75 @@ Our GitHub Actions pipeline ensures code quality with:
 - ✅ All tests must pass
 - ✅ Build must succeed
 
+## 🛠️ Development Tooling
+
+### Taskfile (Enterprise Automation)
+
+We use [Task](https://taskfile.dev/) for professional development automation:
+
+```bash
+# Install Task (if not installed)
+brew install go-task/tap/go-task  # macOS
+# or
+sudo snap install task --classic   # Linux
+
+# Available commands:
+task help          # Show all available commands
+task doctor        # Environment health check
+task verify        # Run GitHub Actions quality gates locally
+task ci-local      # Full CI pipeline locally
+task build         # Build debug APK
+task test          # Run all tests
+task format        # Format code
+task analyze       # Static analysis
+```
+
+### Helper Scripts
+
+```bash
+./scripts/doctor.sh      # Comprehensive environment check
+./scripts/verify.sh      # GitHub Actions verification
+./scripts/ci-local.sh     # Full CI pipeline
+./scripts/build-apk.sh   # Build APK with options
+```
+
+## 📦 Project Tooling
+
+- **Taskfile.yml**: Enterprise-grade task automation
+- **scripts/**: Reusable shell scripts for common operations
+- **Task**: Professional task runner
+- **GitHub Actions**: CI/CD pipeline
+- **Flutter CLI**: Core development tools
+
 ## 🗺️ Roadmap
 
-### Current Status: Sprint 1 ✅ COMPLETED
+### Current Status: Platform Sprint 2 ✅ COMPLETED
 
 | Phase | Status | Target Date |
 |-------|--------|-------------|
 | 1. Foundation | ✅ Completed | 2026-07-27 |
-| 2. Authentication | ⏳ In Progress | 2026-08-15 |
-| 3. Core Experience | ⏳ Planned | 2026-09-01 |
-| 4. User Experience | ⏳ Planned | 2026-09-15 |
-| 5. Backend Integration | ⏳ Planned | 2026-10-01 |
-| 6. Production Readiness | ⏳ Planned | 2026-10-15 |
+| 2. Platform Enhancement | ✅ Completed | 2026-07-28 |
+| 3. Authentication | ⏳ In Progress | 2026-08-15 |
+| 4. Core Experience | ⏳ Planned | 2026-09-01 |
+| 5. User Experience | ⏳ Planned | 2026-09-15 |
+| 6. Backend Integration | ⏳ Planned | 2026-10-01 |
+| 7. Production Readiness | ⏳ Planned | 2026-10-15 |
 
 **Next Milestone**: Authentication UI (Story 4)
+**Platform Sprint 2 Achievements**:
+- ✅ Enterprise Taskfile automation
+- ✅ Professional helper scripts
+- ✅ CI/CD pipeline enhancements
+- ✅ Code quality improvements
+- ✅ Documentation updates
+- ✅ Dependency cleanup
 
 ## 📈 Versioning
 
 We follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html):
 
-- **v0.1.0**: Foundation complete (Current)
+- **v0.1.0**: Foundation complete
+- **v0.1.1**: Platform enhancements (Current)
 - **v0.2.0**: Authentication UI (Planned)
 - **v0.3.0**: Core booking flow (Planned)
 - **v1.0.0**: Production launch (Planned)
@@ -243,6 +291,8 @@ We welcome contributions! Please follow our:
 - [Architecture Audit](docs/foundation_audit.md)
 - [Network Foundation Plan](docs/network_foundation_plan.md)
 - [UI Development Plan](docs/ui_development_plan.md)
+- [Taskfile Documentation](Taskfile.yml)
+- [Contributing Guide](CONTRIBUTING.md)
 
 ## 🔒 License
 
