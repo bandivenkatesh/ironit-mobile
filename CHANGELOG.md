@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-28
+### Added
+- Complete booking flow implementation with mock data
+- Date selector widget with calendar integration
+- Time slot selector with available slots display
+- Address selector with multiple address options
+- Service options selector with customization choices
+- Notes field for special instructions
+- Booking summary page with detailed breakdown
+- Booking success page with confirmation details
+- Bookings list page with booking history
+- Booking draft state management with Riverpod
+- Booking repository with mock implementation
+- Domain models for Address, TimeSlot, ServiceOption, BookingDraft, BookingSummary
+- Reusable booking widgets for consistent UI
+- Price calculation and validation logic
+- Form validation for booking flow
+- Navigation between all booking screens
+- Mock addresses and booking data
+
+### Changed
+- Updated service detail page to navigate to booking entry
+- Enhanced router with all booking-related routes
+- Improved state management architecture
+- Updated TODO.md to reflect completed stories
+- Refactored provider structure for better organization
+
+### Fixed
+- Resolved Riverpod provider syntax issues
+- Fixed navigation between booking screens
+- Corrected state management bugs
+- Addressed analyzer warnings and formatting issues
+- Fixed build and test configuration
+
 ## [v0.1.1] - 2026-07-28
 
 ### Added

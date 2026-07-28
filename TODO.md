@@ -123,49 +123,49 @@
 - [x] Responsive layout
 - [x] Dark mode support
 
-### Story 5: Service Categories ⏳ PLANNED
+### Story 5: Service Categories ✅ COMPLETED
 **Priority**: 🔥 High
-**Status**: ⏳ Planned
+**Status**: ✅ COMPLETED
 **Dependencies**: Story 4
 **Definition of Done**:
-- [ ] Category grid layout
-- [ ] CategoryChip filtering
-- [ ] Search functionality
-- [ ] Mock service data
-- [ ] Navigation to detail
-- [ ] Loading/empty/error states
-- [ ] Responsive design
-- [ ] Dark mode support
+- [x] Category grid layout
+- [x] CategoryChip filtering
+- [x] Search functionality
+- [x] Mock service data
+- [x] Navigation to detail
+- [x] Loading/empty/error states
+- [x] Responsive design
+- [x] Dark mode support
 
-### Story 6: Service Detail ⏳ PLANNED
+### Story 6: Service Detail ✅ COMPLETED
 **Priority**: 🔥 High
-**Status**: ⏳ Planned
+**Status**: ✅ COMPLETED
 **Dependencies**: Story 5
 **Definition of Done**:
-- [ ] Image carousel
-- [ ] Service description
-- [ ] Pricing information
-- [ ] Features list
-- [ ] Rating display
-- [ ] Book Now button
-- [ ] Navigation to booking
-- [ ] All states implemented
-- [ ] Responsive layout
+- [x] Image carousel
+- [x] Service description
+- [x] Pricing information
+- [x] Features list
+- [x] Rating display
+- [x] Book Now button
+- [x] Navigation to booking
+- [x] All states implemented
+- [x] Responsive layout
 
-### Story 7: Booking Flow ⏳ PLANNED
+### Story 7: Booking Flow ✅ COMPLETED
 **Priority**: 🔥 High
-**Status**: ⏳ Planned
+**Status**: ✅ COMPLETED
 **Dependencies**: Story 6
 **Definition of Done**:
-- [ ] Date/time picker
-- [ ] Address form
-- [ ] Service options
-- [ ] Price calculation
-- [ ] Confirm button
-- [ ] Form validation
-- [ ] Mock booking service
-- [ ] Navigation to confirmation
-- [ ] All states handled
+- [x] Date/time picker
+- [x] Address form
+- [x] Service options
+- [x] Price calculation
+- [x] Confirm button
+- [x] Form validation
+- [x] Mock booking service
+- [x] Navigation to confirmation
+- [x] All states handled
 
 ### Story 8: Booking Confirmation 🌕 MEDIUM
 **Priority**: 🌕 Medium

@@ -12,6 +12,11 @@ import '../../features/placeholder/presentation/pages/placeholder_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/services/presentation/pages/services_page.dart';
 import '../../features/services/presentation/pages/service_detail_page.dart';
+import '../../features/bookings/presentation/pages/booking_entry_page.dart';
+import '../../features/bookings/presentation/pages/booking_summary_page.dart';
+import '../../features/bookings/presentation/pages/booking_success_page.dart';
+import '../../features/bookings/presentation/pages/bookings_page.dart';
+import '../../features/home/domain/models/service.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -104,6 +109,32 @@ class AppRouter {
           final String fullPath = state.uri.path;
           final String serviceId = fullPath.split('/').last;
           return ServiceDetailPage(serviceId: serviceId);
+        },
+      ),
+      GoRoute(
+        path: '/booking-entry',
+        builder: (BuildContext context, GoRouterState state) {
+          // Extract service data from state
+          final Service service = state.extra as Service;
+          return BookingEntryPage(service: service);
+        },
+      ),
+      GoRoute(
+        path: '/booking-summary',
+        builder: (BuildContext context, GoRouterState state) {
+          return const BookingSummaryPage();
+        },
+      ),
+      GoRoute(
+        path: '/booking-success',
+        builder: (BuildContext context, GoRouterState state) {
+          return const BookingSuccessPage();
+        },
+      ),
+      GoRoute(
+        path: '/bookings',
+        builder: (BuildContext context, GoRouterState state) {
+          return const BookingsPage();
         },
       ),
     ],
