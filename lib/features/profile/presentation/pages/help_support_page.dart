@@ -116,11 +116,10 @@ class HelpSupportPage extends ConsumerWidget {
                   icon: const Icon(Icons.phone),
                   label: const Text('Call Us'),
                   style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: AppSpacing.small),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: AppSpacing.small),
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(AppSpacing.xSmall),
+                      borderRadius: BorderRadius.circular(AppSpacing.xSmall),
                     ),
                   ),
                 ),
@@ -140,11 +139,10 @@ class HelpSupportPage extends ConsumerWidget {
                   icon: const Icon(Icons.chat),
                   label: const Text('Live Chat'),
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: AppSpacing.small),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: AppSpacing.small),
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(AppSpacing.xSmall),
+                      borderRadius: BorderRadius.circular(AppSpacing.xSmall),
                     ),
                   ),
                 ),

@@ -18,6 +18,7 @@ import '../widgets/widgets.dart';
 import '../../domain/models/service.dart';
 import '../../../profile/presentation/pages/profile_page.dart';
 import '../../../bookings/presentation/pages/bookings_page.dart';
+import '../../../services/presentation/pages/services_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -463,11 +464,7 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   /// Build services screen
   Widget _buildServicesScreen() {
-    // This will be replaced by the actual ServicesPage when we implement it
-    // For now, show a placeholder
-    return const Center(
-      child: Text('Services screen will be implemented soon'),
-    );
+    return const ServicesPage();
   }
 
   /// Build bookings screen

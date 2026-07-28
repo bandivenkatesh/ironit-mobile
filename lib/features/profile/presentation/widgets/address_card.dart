@@ -91,8 +91,7 @@ class AddressCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           vertical: AppSpacing.xSmall),
                       shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(AppSpacing.xSmall),
+                        borderRadius: BorderRadius.circular(AppSpacing.xSmall),
                       ),
                     ),
                   ),
@@ -125,8 +124,7 @@ class AddressCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           vertical: AppSpacing.xSmall),
                       shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(AppSpacing.xSmall),
+                        borderRadius: BorderRadius.circular(AppSpacing.xSmall),
                       ),
                       side: BorderSide(
                         color: Theme.of(context).colorScheme.error,

@@ -1,12 +1,14 @@
 /// Profile Providers
 /// Riverpod state management for profile feature
+library;
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Mock profile data provider
 final profileDataProvider = FutureProvider.autoDispose<Map<String, dynamic>>(
-  (FutureProviderRef<Map<String, dynamic>> ref) async {
+  (ref) async {
     // Simulate network delay
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future<dynamic>.delayed(const Duration(milliseconds: 500));
 
     // Return mock profile data
     return <String, dynamic>{
@@ -28,10 +30,11 @@ final profileDataProvider = FutureProvider.autoDispose<Map<String, dynamic>>(
 );
 
 /// Address book provider
-final addressBookProvider = FutureProvider.autoDispose<List<Map<String, dynamic>>>(
-  (FutureProviderRef<List<Map<String, dynamic>>> ref) async {
+final addressBookProvider =
+    FutureProvider.autoDispose<List<Map<String, dynamic>>>(
+  (ref) async {
     // Simulate network delay
-    await Future.delayed(const Duration(milliseconds: 300));
+    await Future<dynamic>.delayed(const Duration(milliseconds: 300));
 
     // Return mock address data
     return <Map<String, dynamic>>[
@@ -62,7 +65,7 @@ final addressBookProvider = FutureProvider.autoDispose<List<Map<String, dynamic>
 
 /// Preferences provider
 final preferencesProvider = StateProvider<Map<String, dynamic>>(
-  (StateProviderRef<Map<String, dynamic>> ref) {
+  (ref) {
     return <String, dynamic>{
       'notifications': true,
       'darkMode': false,
@@ -73,10 +76,11 @@ final preferencesProvider = StateProvider<Map<String, dynamic>>(
 );
 
 /// Support FAQ provider
-final supportFaqProvider = FutureProvider.autoDispose<List<Map<String, dynamic>>>(
-  (FutureProviderRef<List<Map<String, dynamic>>> ref) async {
+final supportFaqProvider =
+    FutureProvider.autoDispose<List<Map<String, dynamic>>>(
+  (ref) async {
     // Simulate network delay
-    await Future.delayed(const Duration(milliseconds: 200));
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
 
     // Return mock FAQ data
     return <Map<String, dynamic>>[

@@ -74,11 +74,12 @@ class ProfileMenuTile extends StatelessWidget {
               ),
 
               // Trailing widget (arrow by default)
-              trailing ?? const Icon(
-                Icons.chevron_right,
-                size: 24,
-                color: Colors.grey,
-              ),
+              trailing ??
+                  const Icon(
+                    Icons.chevron_right,
+                    size: 24,
+                    color: Colors.grey,
+                  ),
             ],
           ),
         ),

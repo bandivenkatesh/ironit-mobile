@@ -55,9 +55,7 @@ class _SupportCardState extends State<SupportCard> {
                     ),
                   ),
                   Icon(
-                    _isExpanded
-                        ? Icons.expand_less
-                        : Icons.expand_more,
+                    _isExpanded ? Icons.expand_less : Icons.expand_more,
                     size: 24,
                     color: Colors.grey,
                   ),
@@ -83,9 +81,7 @@ class _SupportCardState extends State<SupportCard> {
                   Text(
                     widget.answer,
                     style: AppTypography.bodyText1.copyWith(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onSurfaceVariant,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ),
                   const SizedBox(height: AppSpacing.small),

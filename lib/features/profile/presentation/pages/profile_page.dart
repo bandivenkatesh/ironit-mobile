@@ -103,7 +103,7 @@ class ProfilePage extends ConsumerWidget {
             radius: 40,
             backgroundColor: Theme.of(context).colorScheme.primary,
             child: Text(
-              profile['name'][0].toUpperCase(),
+              (profile['name'] as String)[0].toUpperCase(),
               style: AppTypography.headline4.copyWith(
                 color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
@@ -114,7 +114,7 @@ class ProfilePage extends ConsumerWidget {
 
           // User name
           Text(
-            profile['name'],
+            profile['name'] as String,
             style: AppTypography.headline5.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -123,7 +123,7 @@ class ProfilePage extends ConsumerWidget {
 
           // User email
           Text(
-            profile['email'],
+            profile['email'] as String,
             style: AppTypography.bodyText1.copyWith(
               color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
@@ -141,7 +141,7 @@ class ProfilePage extends ConsumerWidget {
               ),
               const SizedBox(width: AppSpacing.xSmall),
               Text(
-                profile['phone'],
+                profile['phone'] as String,
                 style: AppTypography.bodyText2.copyWith(
                   color: Theme.of(context).colorScheme.onSurfaceVariant,
                 ),

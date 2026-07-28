@@ -117,8 +117,8 @@ class AboutPage extends StatelessWidget {
                   );
                 },
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: AppSpacing.xSmall),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: AppSpacing.xSmall),
                   child: Text(
                     'Privacy Policy',
                     style: AppTypography.bodyText1.copyWith(
@@ -139,8 +139,8 @@ class AboutPage extends StatelessWidget {
                   );
                 },
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: AppSpacing.xSmall),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: AppSpacing.xSmall),
                   child: Text(
                     'Terms of Service',
                     style: AppTypography.bodyText1.copyWith(
