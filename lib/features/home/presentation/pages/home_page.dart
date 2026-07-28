@@ -16,6 +16,8 @@ import '../../../../core/widgets/empty_state_widget.dart';
 import '../providers/providers.dart';
 import '../widgets/widgets.dart';
 import '../../domain/models/service.dart';
+import '../../../profile/presentation/pages/profile_page.dart';
+import '../../../bookings/presentation/pages/bookings_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -470,62 +472,12 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   /// Build bookings screen
   Widget _buildBookingsScreen() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Icon(
-            Icons.calendar_today,
-            size: 64,
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          const SizedBox(height: AppSpacing.medium),
-          Text(
-            'Bookings Screen',
-            style: AppTypography.headline5.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: AppSpacing.small),
-          Text(
-            'View and manage your bookings',
-            style: AppTypography.bodyText1.copyWith(
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-          ),
-        ],
-      ),
-    );
+    return const BookingsPage();
   }
 
   /// Build profile screen
   Widget _buildProfileScreen() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Icon(
-            Icons.person,
-            size: 64,
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          const SizedBox(height: AppSpacing.medium),
-          Text(
-            'Profile Screen',
-            style: AppTypography.headline5.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: AppSpacing.small),
-          Text(
-            'Manage your account and preferences',
-            style: AppTypography.bodyText1.copyWith(
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-          ),
-        ],
-      ),
-    );
+    return const ProfilePage();
   }
 
   /// Build bottom navigation bar

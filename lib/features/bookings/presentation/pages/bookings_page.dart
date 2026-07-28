@@ -10,7 +10,6 @@ import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/loading_widget.dart';
 import '../../../../core/widgets/empty_state_widget.dart';
 import '../providers/booking_providers.dart';
-import '../widgets/booking_summary_card.dart';
 import '../../domain/models/booking_summary.dart';
 
 class BookingsPage extends ConsumerWidget {
@@ -103,13 +102,7 @@ class BookingsPage extends ConsumerWidget {
       ),
       child: InkWell(
         onTap: () {
-          // TODO: Navigate to booking detail page
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Booking detail page coming soon!'),
-              behavior: SnackBarBehavior.floating,
-            ),
-          );
+          context.push('/booking-detail/${booking.id}');
         },
         borderRadius: BorderRadius.circular(AppSpacing.medium),
         child: Padding(

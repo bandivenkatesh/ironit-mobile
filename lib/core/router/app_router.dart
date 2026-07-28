@@ -16,6 +16,12 @@ import '../../features/bookings/presentation/pages/booking_entry_page.dart';
 import '../../features/bookings/presentation/pages/booking_summary_page.dart';
 import '../../features/bookings/presentation/pages/booking_success_page.dart';
 import '../../features/bookings/presentation/pages/bookings_page.dart';
+import '../../features/bookings/presentation/pages/booking_detail_page.dart';
+import '../../features/profile/presentation/pages/profile_page.dart';
+import '../../features/profile/presentation/pages/addresses_page.dart';
+import '../../features/profile/presentation/pages/preferences_page.dart';
+import '../../features/profile/presentation/pages/help_support_page.dart';
+import '../../features/profile/presentation/pages/about_page.dart';
 import '../../features/home/domain/models/service.dart';
 
 class AppRouter {
@@ -135,6 +141,45 @@ class AppRouter {
         path: '/bookings',
         builder: (BuildContext context, GoRouterState state) {
           return const BookingsPage();
+        },
+      ),
+      GoRoute(
+        path: '/profile',
+        builder: (BuildContext context, GoRouterState state) {
+          return const ProfilePage();
+        },
+      ),
+      GoRoute(
+        path: '/addresses',
+        builder: (BuildContext context, GoRouterState state) {
+          return const AddressesPage();
+        },
+      ),
+      GoRoute(
+        path: '/preferences',
+        builder: (BuildContext context, GoRouterState state) {
+          return const PreferencesPage();
+        },
+      ),
+      GoRoute(
+        path: '/help-support',
+        builder: (BuildContext context, GoRouterState state) {
+          return const HelpSupportPage();
+        },
+      ),
+      GoRoute(
+        path: '/about',
+        builder: (BuildContext context, GoRouterState state) {
+          return const AboutPage();
+        },
+      ),
+      GoRoute(
+        path: '/booking-detail/:id',
+        builder: (BuildContext context, GoRouterState state) {
+          // Extract the booking ID from the path
+          final String fullPath = state.uri.path;
+          final String bookingId = fullPath.split('/').last;
+          return BookingDetailPage(bookingId: bookingId);
         },
       ),
     ],

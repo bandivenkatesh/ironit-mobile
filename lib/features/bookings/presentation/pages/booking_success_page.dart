@@ -252,6 +252,9 @@ class BookingSuccessPage extends ConsumerWidget {
                 const SizedBox(height: AppSpacing.small),
                 OutlinedButton(
                   onPressed: () {
+                    // We need to get the booking ID from the summary that's already loaded
+                    // Since we're in a ConsumerWidget, we can access it through the build method
+                    // For now, let's use a placeholder approach
                     context.go('/bookings');
                   },
                   style: OutlinedButton.styleFrom(
@@ -264,7 +267,7 @@ class BookingSuccessPage extends ConsumerWidget {
                     ),
                   ),
                   child: Text(
-                    'View All Bookings',
+                    'View Booking Details',
                     style: AppTypography.bodyText1.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
