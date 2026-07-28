@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_typography.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../domain/models/service.dart';
 
 class ServiceCard extends StatelessWidget {
@@ -13,6 +14,7 @@ class ServiceCard extends StatelessWidget {
   final VoidCallback? onTap;
   final bool showFavorite;
   final bool isCompact;
+  final bool showCategory;
 
   const ServiceCard({
     super.key,
@@ -20,6 +22,7 @@ class ServiceCard extends StatelessWidget {
     this.onTap,
     this.showFavorite = true,
     this.isCompact = false,
+    this.showCategory = false,
   });
 
   @override
@@ -28,62 +31,105 @@ class ServiceCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSpacing.medium),
       ),
-      elevation: 2,
+      elevation: isCompact ? 1 : 2,
       surfaceTintColor: Theme.of(context).colorScheme.surfaceTint,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppSpacing.medium),
+        overlayColor: MaterialStateProperty.all(
+          Theme.of(context).colorScheme.primary.withOpacity(0.08),
+        ),
         child: Padding(
           padding:
               EdgeInsets.all(isCompact ? AppSpacing.small : AppSpacing.medium),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // Service Image
-              ClipRRect(
-                borderRadius: BorderRadius.circular(AppSpacing.small),
-                child: Image.network(
-                  service.imageUrl,
-                  height: isCompact ? 100 : 120,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  errorBuilder: (
-                    BuildContext context,
-                    Object error,
-                    StackTrace? stackTrace,
-                  ) {
-                    return Container(
+              // Service Image with Category Badge
+              Stack(
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(AppSpacing.small),
+                    child: Container(
                       height: isCompact ? 100 : 120,
+                      width: double.infinity,
                       color:
                           Theme.of(context).colorScheme.surfaceContainerHighest,
-                      child: Icon(
-                        Icons.iron_outlined,
-                        size: 40,
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
-                    );
-                  },
-                  loadingBuilder: (
-                    BuildContext context,
-                    Widget child,
-                    ImageChunkEvent? loadingProgress,
-                  ) {
-                    if (loadingProgress == null) return child;
-                    return Container(
-                      height: isCompact ? 100 : 120,
-                      color:
-                          Theme.of(context).colorScheme.surfaceContainerHighest,
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
-                              : null,
+                      child: service.imageUrl.isNotEmpty
+                          ? Image.network(
+                              service.imageUrl,
+                              fit: BoxFit.cover,
+                              errorBuilder: (
+                                BuildContext context,
+                                Object error,
+                                StackTrace? stackTrace,
+                              ) {
+                                return Center(
+                                  child: Icon(
+                                    Icons.iron_outlined,
+                                    size: 40,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurfaceVariant,
+                                  ),
+                                );
+                              },
+                              loadingBuilder: (
+                                BuildContext context,
+                                Widget child,
+                                ImageChunkEvent? loadingProgress,
+                              ) {
+                                if (loadingProgress == null) return child;
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    value: loadingProgress.expectedTotalBytes !=
+                                            null
+                                        ? loadingProgress
+                                                .cumulativeBytesLoaded /
+                                            loadingProgress.expectedTotalBytes!
+                                        : null,
+                                    strokeWidth: 2,
+                                  ),
+                                );
+                              },
+                            )
+                          : Center(
+                              child: Icon(
+                                Icons.iron_outlined,
+                                size: 40,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurfaceVariant,
+                              ),
+                            ),
+                    ),
+                  ),
+                  if (showCategory)
+                    Positioned(
+                      top: AppSpacing.small,
+                      right: AppSpacing.small,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.xSmall,
+                          vertical: AppSpacing.xxSmall,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                          borderRadius:
+                              BorderRadius.circular(AppSpacing.xSmall),
+                        ),
+                        child: Text(
+                          'Premium',
+                          style: AppTypography.caption.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                ],
               ),
               const SizedBox(height: AppSpacing.small),
 
@@ -93,7 +139,7 @@ class ServiceCard extends StatelessWidget {
                 style: AppTypography.bodyText1.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
-                maxLines: 1,
+                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: AppSpacing.xSmall),
@@ -101,8 +147,8 @@ class ServiceCard extends StatelessWidget {
               // Rating and Reviews
               Row(
                 children: <Widget>[
-                  const Icon(
-                    Icons.star,
+                  Icon(
+                    Icons.star_rounded,
                     color: Colors.amber,
                     size: 16,
                   ),
@@ -128,12 +174,26 @@ class ServiceCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(
-                    '₹${service.price.toStringAsFixed(0)}',
-                    style: AppTypography.subtitle1.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
+                  Row(
+                    children: <Widget>[
+                      Text(
+                        '₹${service.price.toStringAsFixed(0)}',
+                        style: AppTypography.subtitle1.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                      if (service.isPopular)
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(left: AppSpacing.xSmall),
+                          child: Icon(
+                            Icons.whatshot,
+                            color: Theme.of(context).colorScheme.secondary,
+                            size: 16,
+                          ),
+                        ),
+                    ],
                   ),
                   Row(
                     children: <Widget>[

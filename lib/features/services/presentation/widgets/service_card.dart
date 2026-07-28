@@ -13,6 +13,7 @@ class ServiceCard extends StatelessWidget {
   final VoidCallback? onTap;
   final bool showFavorite;
   final bool isCompact;
+  final bool showCategory;
 
   const ServiceCard({
     super.key,
@@ -20,6 +21,7 @@ class ServiceCard extends StatelessWidget {
     this.onTap,
     this.showFavorite = true,
     this.isCompact = false,
+    this.showCategory = false,
   });
 
   @override
@@ -29,6 +31,7 @@ class ServiceCard extends StatelessWidget {
       onTap: onTap,
       showFavorite: showFavorite,
       isCompact: isCompact,
+      showCategory: showCategory,
     );
   }
 }

@@ -7,6 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-28
+### Added
+- **Enhanced Services Experience** ✅ COMPLETED
+  - Complete replacement of Services placeholder with professional UI
+  - Category-based service discovery with improved visual presentation
+  - Advanced search functionality with real-time filtering
+  - Sorting options: Default, Price (Low-High/High-Low), Rating, Duration
+  - Enhanced service cards with premium badges and popular indicators
+  - Improved visual hierarchy with better spacing and typography
+  - Seamless navigation to service detail and booking flow
+  - Widget tests for ServicesPage and ServiceCard components
+  - Comprehensive state management with Riverpod providers
+  - Loading, empty, and error states with proper user feedback
+
+### Changed
+- **Services Architecture Improvements**
+  - Refined Riverpod providers with combined filtering and sorting logic
+  - Enhanced state management for services, categories, and search
+  - Improved provider organization and separation of concerns
+  - Optimized service data flow and caching
+  - Better integration between Home and Services modules
+
+- **UI/UX Enhancements**
+  - Upgraded service card design with category badges and visual indicators
+  - Improved category chip styling with better selection states
+  - Enhanced search bar with clear button and better visual feedback
+  - Added sort button in app bar for easy access to sorting options
+  - Improved grid layout and responsive design
+  - Better touch targets and accessibility compliance
+
+### Fixed
+- **Services Experience Bugs**
+  - Fixed category chip selection and visual feedback
+  - Improved service card image loading and error states
+  - Enhanced search functionality with better query handling
+  - Fixed sorting logic and provider updates
+  - Resolved navigation issues between services and details
+  - Improved empty state handling and user guidance
+
 ## [0.2.0] - 2026-07-28
 ### Added
 - Complete booking flow implementation with mock data
@@ -315,5 +354,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Feature flags
 - A/B testing
 
-[Unreleased]: https://github.com/bandivenkatesh/ironit-mobile/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/bandivenkatesh/ironit-mobile/compare/v0.3.0...HEAD
+[v0.3.0]: https://github.com/bandivenkatesh/ironit-mobile/releases/tag/v0.3.0
+[v0.2.0]: https://github.com/bandivenkatesh/ironit-mobile/releases/tag/v0.2.0
+[v0.1.2]: https://github.com/bandivenkatesh/ironit-mobile/releases/tag/v0.1.2
+[v0.1.1]: https://github.com/bandivenkatesh/ironit-mobile/releases/tag/v0.1.1
 [v0.1.0]: https://github.com/bandivenkatesh/ironit-mobile/releases/tag/v0.1.0
+<task_progress>
+- [x] Analyze current codebase and requirements
+- [x] Create enhanced service providers with combined filtering
+- [x] Improve service card visual design
+- [x] Enhance services page with better UI/UX
+- [x] Add sorting functionality
+- [x] Improve category presentation
+- [x] Add widget tests
+- [x] Update documentation
+- [ ] Run quality checks
+- [ ] Final verification
+</task_progress>
+</write_to_file>

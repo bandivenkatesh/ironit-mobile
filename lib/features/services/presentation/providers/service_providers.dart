@@ -27,33 +27,79 @@ final StateProvider<String> selectedCategoryProvider =
   return 'all'; // Default to 'all' category
 });
 
-/// Filtered Services Provider
-final FutureProvider<List<Service>> filteredServicesProvider =
-    FutureProvider<List<Service>>((Ref ref) async {
-  final ServiceRepository repository = ref.watch(servicesRepositoryProvider);
-  final String selectedCategory = ref.watch(selectedCategoryProvider);
-
-  if (selectedCategory == 'all') {
-    return repository.getAllServices();
-  } else {
-    return repository.getServicesByCategory(selectedCategory);
-  }
-});
-
 /// Search Query Provider
 final StateProvider<String> searchQueryProvider =
     StateProvider<String>((Ref ref) {
   return '';
 });
 
-/// Search Results Provider
-final FutureProvider<List<Service>> searchResultsProvider =
+/// Sort Option Provider
+final StateProvider<String> sortOptionProvider =
+    StateProvider<String>((Ref ref) {
+  return 'default'; // Options: default, price-low-high, price-high-low, rating, duration
+});
+
+/// Combined Filtered and Sorted Services Provider
+final FutureProvider<List<Service>> filteredAndSortedServicesProvider =
     FutureProvider<List<Service>>((Ref ref) async {
   final ServiceRepository repository = ref.watch(servicesRepositoryProvider);
+  final String selectedCategory = ref.watch(selectedCategoryProvider);
   final String searchQuery = ref.watch(searchQueryProvider);
+  final String sortOption = ref.watch(sortOptionProvider);
 
-  return repository.searchServices(searchQuery);
+  // Get base services
+  List<Service> services;
+  if (selectedCategory == 'all') {
+    services = await repository.getAllServices();
+  } else {
+    services = await repository.getServicesByCategory(selectedCategory);
+  }
+
+  // Apply search filter
+  if (searchQuery.isNotEmpty) {
+    final String lowerQuery = searchQuery.toLowerCase();
+    services = services.where((Service service) {
+      return service.name.toLowerCase().contains(lowerQuery) ||
+          service.description.toLowerCase().contains(lowerQuery) ||
+          service.categoryId.toLowerCase().contains(lowerQuery);
+    }).toList();
+  }
+
+  // Apply sorting
+  return _sortServices(services, sortOption);
 });
+
+/// Sort services based on the selected option
+List<Service> _sortServices(List<Service> services, String sortOption) {
+  switch (sortOption) {
+    case 'price-low-high':
+      return services
+        ..sort((Service a, Service b) => a.price.compareTo(b.price));
+    case 'price-high-low':
+      return services
+        ..sort((Service a, Service b) => b.price.compareTo(a.price));
+    case 'rating':
+      return services
+        ..sort((Service a, Service b) => b.rating.compareTo(a.rating));
+    case 'duration':
+      return services
+        ..sort((Service a, Service b) => a.estimatedDuration.inMinutes
+            .compareTo(b.estimatedDuration.inMinutes));
+    case 'default':
+    default:
+      // Default sorting: featured first, then popular, then by name
+      return services
+        ..sort((Service a, Service b) {
+          if (a.isFeatured != b.isFeatured) {
+            return a.isFeatured ? -1 : 1;
+          }
+          if (a.isPopular != b.isPopular) {
+            return a.isPopular ? -1 : 1;
+          }
+          return a.name.compareTo(b.name);
+        });
+  }
+}
 
 /// Service by ID Provider
 final FutureProviderFamily<Service?, String> serviceByIdProvider =
