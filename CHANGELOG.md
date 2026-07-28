@@ -58,6 +58,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Improved type inference throughout codebase
   - Enhanced null safety compliance
 
+## [v0.1.2] - 2026-07-28
+
+### Added
+- **Story 4: Home Dashboard Implementation** ✅ COMPLETED
+  - **Domain Models**: Service, Category, Promotion with full serialization
+  - **Mock Data Layer**: Comprehensive mock repositories for all entities
+  - **Repository Abstractions**: Clean Architecture interfaces and implementations
+  - **Riverpod Providers**: State management for all data types
+  - **Reusable Widgets**:
+    - `ServiceCard`: Feature-rich service display with images, ratings, pricing
+    - `CategoryCard`: Interactive category browsing with icons
+    - `PromotionBanner`: Auto-scrolling promotional banners
+  - **Loading/Empty/Error States**: Professional UI states for all scenarios
+  - **Home Dashboard**: Complete dashboard with:
+    - Greeting section with user location
+    - Promotions carousel
+    - Featured services grid
+    - Category browsing
+    - Popular services
+    - Recently viewed services
+    - Real-time search functionality
+  - **Bottom Navigation**: 4-tab navigation (Home, Services, Bookings, Profile)
+  - **Search Functionality**: Client-side search with real-time filtering
+
+### Changed
+- **Enhanced AppSpacing**: Added xxSmall (2.0) for finer spacing control
+- **Updated Home Page**: Replaced placeholder with full-featured dashboard
+- **Improved Router**: Home page now shows professional dashboard instead of placeholder
+
+### Fixed
+- **Type Safety**: Added proper Service model import in home page
+- **Widget APIs**: Corrected usage of core widgets (LoadingWidget, ErrorStateWidget, EmptyStateWidget)
+- **Null Safety**: Added proper null checks and conditional access throughout
+
 ## [v0.1.0] - 2026-07-27
 
 ### Added
