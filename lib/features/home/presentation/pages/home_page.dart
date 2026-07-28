@@ -4,6 +4,7 @@ library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ironit/features/home/domain/models/category.dart';
 import 'package:ironit/features/home/domain/models/promotion.dart';
 
@@ -328,7 +329,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     child: CategoryCard(
                       category: categories[index],
                       onTap: () {
-                        // TODO: Navigate to category detail
+                        context.go('/services');
                       },
                     ),
                   );
@@ -448,7 +449,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             return ServiceCard(
               service: filteredServices[index],
               onTap: () {
-                // TODO: Navigate to service detail
+                context.go('/service/${filteredServices[index].id}');
               },
               isCompact: true,
             );
@@ -460,31 +461,10 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   /// Build services screen
   Widget _buildServicesScreen() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Icon(
-            Icons.build,
-            size: 64,
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          const SizedBox(height: AppSpacing.medium),
-          Text(
-            'Services Screen',
-            style: AppTypography.headline5.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: AppSpacing.small),
-          Text(
-            'Browse all available services',
-            style: AppTypography.bodyText1.copyWith(
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-          ),
-        ],
-      ),
+    // This will be replaced by the actual ServicesPage when we implement it
+    // For now, show a placeholder
+    return const Center(
+      child: Text('Services screen will be implemented soon'),
     );
   }
 

@@ -10,6 +10,8 @@ import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/auth/presentation/pages/forgot_password_page.dart';
 import '../../features/placeholder/presentation/pages/placeholder_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/services/presentation/pages/services_page.dart';
+import '../../features/services/presentation/pages/service_detail_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -87,6 +89,21 @@ class AppRouter {
         path: '/home',
         builder: (BuildContext context, GoRouterState state) {
           return const HomePage();
+        },
+      ),
+      GoRoute(
+        path: '/services',
+        builder: (BuildContext context, GoRouterState state) {
+          return const ServicesPage();
+        },
+      ),
+      GoRoute(
+        path: '/service/:id',
+        builder: (BuildContext context, GoRouterState state) {
+          // Extract the service ID from the path
+          final String fullPath = state.uri.path;
+          final String serviceId = fullPath.split('/').last;
+          return ServiceDetailPage(serviceId: serviceId);
         },
       ),
     ],
